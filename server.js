@@ -4,6 +4,7 @@ var session = require("express-session");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
 var compression = require('compression');
+var routes = require("./routes");
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
@@ -31,15 +32,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Requiring our routes
-require("./routes/business-api-routes")(app);
-require("./routes/user-api-routes")(app);
-require('./routes/google-api-routes')(app);
-require("./routes/html-routes")(app);
+// require("./routes/business-api-routes")(app);
+// require("./routes/user-api-routes")(app);
+// require('./routes/google-api-routes')(app);
+// require("./routes/html-routes")(app);
+app.use(routes);
+
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync({force:false}).then(function() {
+// db.sequelize.sync({force:false}).then(function() {
   app.listen(PORT, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
-});
+// });
 
 
