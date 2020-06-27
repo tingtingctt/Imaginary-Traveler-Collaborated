@@ -1,2 +1,2 @@
-# ImaginaryTraveller
+# ImaginaryTraveler
 Full Stack App
