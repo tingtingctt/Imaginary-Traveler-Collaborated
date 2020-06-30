@@ -6,6 +6,8 @@ import Panorama from "./components/Panorama";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Book from './pages/Book'
 import Openbook from "./components/Openbook";
+import Login from "./components/Login"
+import Signup from "./components/Signup"
 
 function App() {
   return (
@@ -15,6 +17,12 @@ function App() {
         <Switch>
           <Route exact path="/">
             <p>Navbar</p>
+          </Route>
+          <Route exact path="/login">
+            <Login/>
+          </Route>
+          <Route exact path="/signup">
+            <Signup/>
           </Route>
 
           <Route exact path="/panorama">

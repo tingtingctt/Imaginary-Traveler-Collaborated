@@ -1,4 +1,3 @@
-
 const jwt = require("../config/jwt");
 const {User} = require("../models");
 const {initPassport, authenticate} = require("../config/passport");
@@ -14,4 +13,14 @@ app.post("/auth/signup", (req,res)=>{
 });
 }
 
+// const router = require("express").Router();
+// const booksController = require("../controllers/booksController");
 
+// // Matches with "/api/books"
+// router.route("/login")
+//   .post(booksController.create);
+
+// router.route("/signup")
+//     .post(booksController.create);
+    
+module.exports = router;
