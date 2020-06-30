@@ -22,6 +22,7 @@ import { StreetView } from "react-google-map-street-view";
 
 
 function Panorama(props){
+  console.log(props);
 
   return (
 
@@ -29,6 +30,8 @@ function Panorama(props){
       // <StreetView latLang ={{lat: 48.8530, lng: 2.3499}} APIkey="AIzaSyD5QSvqKdaT_p-MglqLosMmhZPbPCE5Wns" streetView zoomLevel={15}/>
   );
 }
+
+
 
 
   export default Panorama;
