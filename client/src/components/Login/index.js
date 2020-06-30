@@ -29,7 +29,7 @@ class Login extends React.Component {
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
   loginUser(email, password) {
-    Axios.post("/api/login", {
+    Axios.post("auth/login", {
       email: email,
       password: password
     })

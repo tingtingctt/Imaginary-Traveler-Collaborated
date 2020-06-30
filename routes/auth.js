@@ -3,13 +3,15 @@ const {User} = require("../models");
 const {initPassport, authenticate} = require("../config/passport");
 
 module.exports = app =>{
-initPassport(app,User)
+// initPassport(app,User)
 app.post("/auth/login", (req,res)=>{
     console.log(req.body)
+    res.json("hello");
 });
 
 app.post("/auth/signup", (req,res)=>{
     console.log(req.body)
+    res.json("hello");
 });
 }
 
@@ -23,4 +25,4 @@ app.post("/auth/signup", (req,res)=>{
 // router.route("/signup")
 //     .post(booksController.create);
     
-module.exports = router;
+// module.exports = router;
