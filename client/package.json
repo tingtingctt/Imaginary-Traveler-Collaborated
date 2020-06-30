@@ -9,6 +9,9 @@
     "@testing-library/user-event": "^7.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-flip-page": "^1.6.2",
+    "react-google-map-street-view": "^1.1.0",
+    "react-google-maps": "^9.4.5",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "typed.js": "^2.0.11"

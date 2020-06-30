@@ -1,22 +1,42 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import Subtitle from "./Subtitle"
+import Subtitle from "./components/Subtitle";
+import Panorama from "./components/Panorama";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
+import Book from './pages/Book'
+import Openbook from "./components/Openbook";
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <Subtitle text={["His cathedral was enough for him.", "It was peopled with marble figures of kings, saints and bishops who at least did not laugh in his face and looked at him with only tranquillity and benevolence.", "The other statues, those of monsters and demons, had no hatred for him – he resembled them too closely for that.", "It was rather the rest of mankind that they jeered at. The saints were his friends and blessed him; the monsters were his friends and kept watch over him.", "He would sometimes spend whole hours crouched before one of the statues in solitary conversation with it.", "If anyone came upon him then he would run away like a lover surprised during a serenade."]}/>
+       
         <Switch>
           <Route exact path="/">
-            <p>Default Route</p>
+            <p>Navbar</p>
           </Route>
+
+          <Route exact path="/panorama">
+          {/* <Panorama   containerElement={<div style={{ height: `400px` }} />}
+                      mapElement={<div style={{ height: `100%` }} />}/> */}
+            <Panorama address={"31 rue saint louis en l'ile, 75004 Paris, France"}/>
+            <Subtitle text={("His cathedral was enough for him. It was peopled with marble figures of kings, saints and bishops who at least did not laugh in his face and looked at him with only tranquillity and benevolence. The other statues, those of monsters and demons, had no hatred for him – he resembled them too closely for that. It was rather the rest of mankind that they jeered at. The saints were his friends and blessed him; the monsters were his friends and kept watch over him. He would sometimes spend whole hours crouched before one of the statues in solitary conversation with it. If anyone came upon him then he would run away like a lover surprised during a serenade.").split(".")}/>
+          </Route>
+
+          <Route exact path="/books">
+            <p>Bookshelf Route</p>
+          </Route>
+
           <Route exact path="/books/:id">
-            <p>ID Route</p>
+            <p>Book ID Route</p>
           </Route>
+
+          <Route exact path="/openbook">
+            <Openbook/>
+            <Book/>
+          </Route>
+
           <Route>
             <p>No Match Route</p>
           </Route>
