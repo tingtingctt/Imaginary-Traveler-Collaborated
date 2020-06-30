@@ -4,6 +4,9 @@ import FlipChild from "../Flipchild";
 import Panorama from '../Panorama';
 import FlipPage from 'react-flip-page';
 import Subtitle from '../Subtitle';
+import Axios from 'axios';
+
+
 
 const pages = [
   {
@@ -38,7 +41,7 @@ class Flipbook extends React.Component {
 
     state = {
       clicked: false,
-      address: "31 rue saint louis en l'ile, 75004 Paris, France",
+      // address: "31 rue saint louis en l'ile, 75004 Paris, France",
       index: 0
     }
   
