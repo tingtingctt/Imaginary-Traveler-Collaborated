@@ -20,7 +20,6 @@ function Halfpano(props){
       // <StreetView latLang ={{lat: 48.8530, lng: 2.3499}} APIkey="AIzaSyD5QSvqKdaT_p-MglqLosMmhZPbPCE5Wns" streetView zoomLevel={15}/>
 
 
-    // <StreetViewPanorama position={{lat: 48.8530, lng: 2.3499}}/>
   );
 }
 

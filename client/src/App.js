@@ -21,7 +21,7 @@ function App() {
           <Route exact path="/panorama">
           {/* <Panorama   containerElement={<div style={{ height: `400px` }} />}
                       mapElement={<div style={{ height: `100%` }} />}/> */}
-            <Panorama address={"31 rue saint louis en l'ile, 75004 Paris, France"}/>
+            <Panorama address={"Vale of Heath, Hampstead Heath, London, England"}/>
             <Subtitle text={("His cathedral was enough for him. It was peopled with marble figures of kings, saints and bishops who at least did not laugh in his face and looked at him with only tranquillity and benevolence. The other statues, those of monsters and demons, had no hatred for him – he resembled them too closely for that. It was rather the rest of mankind that they jeered at. The saints were his friends and blessed him; the monsters were his friends and kept watch over him. He would sometimes spend whole hours crouched before one of the statues in solitary conversation with it. If anyone came upon him then he would run away like a lover surprised during a serenade.").split(".")}/>
           </Route>
 

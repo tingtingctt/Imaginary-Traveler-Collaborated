@@ -1,64 +1,45 @@
-// Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
-var bcrypt = require("bcryptjs");
-// Creating our User model
-module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
-    // The email cannot be null, and must be a proper email before creation
+const bcrypt  = require("bcrypt");
+const mongoose = require("../config/mongoose");
+const SALT_ROUNDS = 10;
+
+const {Schema} = mongoose;
+const {Types} = Schema;
+
+const userSchema = new Schema({
     email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true
-      }
+        type: String,
+        unique: true,
+        required: true,
+        trim: true,
+        match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     },
-    // The password cannot be null
+    username: {
+        type: String,
+        unique: false,
+        required: true,
+        trim: true
+    },
     password: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    preference: {
-      type: DataTypes.STRING,
-      allowNull: false
+        type: String,
+        required: true
     }
-  },{
-    timestamps:false
-  }
-  );
-  // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
-  User.prototype.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
-  };
-  // Hooks are automatic methods that run during various phases of the User Model lifecycle
-  // In this case, before a User is created, we will automatically hash their password
-  User.addHook("beforeCreate", function(user) {
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
-  });
-  return User;
-};
+});
 
+userSchema.pre("save", function(){
+    if(this.password.length < 8){
+        return Promise.reject(
+            new Error("Password must be at least 8 characters!")
+        )
+    }
+    return bcrypt.hash(this.password, SALT_ROUNDS).then(hash=>{
+        this.password = hash;
+    })
+})
 
+userSchema.methods.checkPW = function(password){
+    return bcrypt.compare(password, this.password)
+}
 
-// module.exports = function(sequelize, DataTypes) {
-//   const User = sequelize.define("User",
-//   {
-//     firstName:
-//     {
-//       type: DataTypes.STRING,
-//       allowNull: false
-//     },
-//     lastName:
-//     {
-//       type: DataTypes.STRING
-//       // allowNull defaults to true
-//     }
-//   },
-//   User.associate = function(models) {
-//     // Associating Author with Posts
-//     // When an Author is deleted, also delete any associated Posts
-//     User.hasMany(models.Business, {
-//       onDelete: "cascade"
-//     });
-//     return User;
-//   });
-// };
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;
