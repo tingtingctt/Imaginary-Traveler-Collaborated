@@ -6,6 +6,7 @@ import Panorama from "./components/Panorama";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Book from './pages/Book'
 import Openbook from "./components/Openbook";
+import Bookshelf from "./pages/BookShelf";
 
 function App() {
   return (
@@ -18,8 +19,12 @@ function App() {
           </Route>
 
           <Route exact path="/books">
+<<<<<<< HEAD
             <p>Bookshelf Route</p>
             
+=======
+            <Bookshelf />
+>>>>>>> master
           </Route>
 
           <Route exact path="/books/:id">
