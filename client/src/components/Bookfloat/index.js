@@ -13,8 +13,11 @@ import shaker from "../../assets/shaker.png";
 import sweetbitter from "../../assets/sweetbitter.png";
 import "../../components/Background/style.css";
 
+
 function Bookfloat() {
-  const canvasRef = React.useRef(null)
+  const canvasRef = React.useRef(null);
+
+
   return (
     <canvas
       className="Background"
