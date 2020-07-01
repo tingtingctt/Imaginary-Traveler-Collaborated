@@ -8,7 +8,7 @@ const bookSchema = new Schema ({
        trim: true,
        required: "Enter title of the book"
     },
-    author:{
+    authors:{
         type:String,
         trim: true,
         required: "Enter the name of the author"
@@ -22,7 +22,10 @@ const bookSchema = new Schema ({
         trim: true,
         required: "Enter location of book setting"
     },
-    paragraph:{
+    imagelinks:{
+        type:String,
+    },
+    description:{
         type:String,
     }
 });
