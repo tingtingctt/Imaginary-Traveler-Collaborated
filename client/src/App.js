@@ -3,7 +3,7 @@ import React from 'react';
 import './App.css';
 import Subtitle from "./components/Subtitle";
 import Panorama from "./components/Panorama";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Book from './pages/Book'
 import Openbook from "./components/Openbook";
 import Login from "./components/Login"
@@ -34,6 +34,7 @@ function App() {
 
           <Route exact path="/books/:title">
             <p>Book ID Route</p>
+            <Book/>
           </Route>
 
           <Route exact path="/openbook">
