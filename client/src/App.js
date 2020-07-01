@@ -19,15 +19,11 @@ function App() {
           </Route>
 
           <Route exact path="/books">
-<<<<<<< HEAD
             <p>Bookshelf Route</p>
-            
-=======
             <Bookshelf />
->>>>>>> master
           </Route>
 
-          <Route exact path="/books/:id">
+          <Route exact path="/books/:title">
             <p>Book ID Route</p>
           </Route>
 

@@ -17,6 +17,16 @@ import Row from "../components/Row"
 import "../components/Background/style.css";
 
 function BookShelf(props) {
+    // mock API call
+    const books = [
+        {
+            title: "Alburquerque"
+        },
+        {
+            title: "BigSleep"
+        }
+    ]
+
 
     return (
         // <Wrapper>
@@ -26,7 +36,10 @@ function BookShelf(props) {
                     {/* <Row> */}
                     <div className="Background">
                         <div className="Alburquerque">
-                            < img src={alburquerque} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "81vw", "top" : "7vh"}} alt="Alburquerque"/>
+                            {/* JSX Template Literal Example */}
+                            <a href={`/${books[0].title}`}> 
+                                < img src={alburquerque} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "81vw", "top" : "7vh"}} alt="Alburquerque"/>
+                            </a>
                         </div>
                         <div className="BigSleep">
                             < img src={bigSleep} style={{"width" : "9vw", "height" : "22.5vh", "position": "absolute", "left" : "59vw", "top" : "9vh"}} alt="The Big Sleep"/>
@@ -36,7 +49,7 @@ function BookShelf(props) {
                         </div>  
                         <div className="Foucault">
                             < img src={foucault} style={{"width" : "9vw", "height" : "26vh", "position": "absolute", "left" : "37vw", "top" : "5vh"}} alt="Foucault's Pendulum"/>
-                        </div>                                                             
+                       </div>                                                             
                     {/* </Row> */}
                     {/* <Row> */}
                         <div className="Gatsby">
