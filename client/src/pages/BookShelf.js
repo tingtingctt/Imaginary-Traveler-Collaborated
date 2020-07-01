@@ -59,7 +59,10 @@ function BookShelf(props) {
                             < img src={guns} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "53vw", "top" : "38.5vh"}} alt="The Guns of August"/>
                         </div>
                         <div className="Hunchback">
-                            < img src={hunchback} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "10vw", "top" : "39vh"}} alt="The Hunchback of Notre Dame"/>
+                            {/* animation and settime out, JSX Template Literal not working */}
+                            <a href="javascript:setTimeout(()=>{window.location = '/1' },2000);"> 
+                                <img id="hunch" src={hunchback} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "10vw", "top" : "39vh"}} alt="The Hunchback of Notre Dame"/>
+                            </a>                                              
                         </div>  
                         <div className="Kingbird">
                             < img src={kingbird} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "32vw", "top" : "39vh"}} alt="Kingbird Highway"/>
@@ -67,7 +70,7 @@ function BookShelf(props) {
                     {/* </Row> */}
                     {/* <Row> */}
                         <div className="Little">
-                            < img src={littleFires} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "81vw", "top" : "71vh"}} alt="Little Fires Everywhere"/>
+                            < img id="bridge" src={littleFires} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "81vw", "top" : "71vh"}} alt="Little Fires Everywhere"/>
                         </div>
                         <div className="Play">
                             < img src={play} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "59vw", "top" : "71vh"}} alt="Play It As It Lays"/>
