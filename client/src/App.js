@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Book from './pages/Book'
 import Openbook from "./components/Openbook";
 import Login from "./components/Login"
+import Bookfloat from "./components/Bookfloat"
 import Signup from "./components/Signup"
 import Bookshelf from "./pages/BookShelf";
 
@@ -21,13 +22,13 @@ function App() {
           </Route>
           <Route exact path="/login">
             <Login/>
+            <Bookfloat/>
           </Route>
           <Route exact path="/signup">
             <Signup/>
           </Route>
 
           <Route exact path="/books">
-            <p>Bookshelf Route</p>
             <Bookshelf />
           </Route>
 
