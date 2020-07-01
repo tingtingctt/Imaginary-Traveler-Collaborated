@@ -57,8 +57,8 @@ class Login extends React.Component {
 
     return (  
       <div className="container">
-        <div className="row">
-          <div className="col-md-6 col-md-offset-3">
+        <div className="row" style={{position: "fixed", top: "30%", left: "38%", width: "400px", backgroundColor: "hsla(60, 20%, 99%, 0.8)"}}>
+          <div className="col-md-12" >
               <h2>Login Form</h2>
                 <form className="login">
                   <div className="form-group">
