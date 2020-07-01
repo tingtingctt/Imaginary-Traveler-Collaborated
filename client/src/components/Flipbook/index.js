@@ -44,24 +44,26 @@ class Flipbook extends React.Component {
   
     gotoNextPage() {
       this.flipPage.gotoNextPage();
+      console.log("flippage state:" + this.flipPage.state.page);
 
       if (this.state.index < pages.length-1){
         let j = this.state.index + 1;
-        this.setState( {index: j } );
+        this.setState( {address: pages[j].address, index: j } );
       }
 
-      console.log("current page:" + this.state.index)
+      console.log("current index:" + this.state.index)
     }
 
     gotoPreviousPage() {
         this.flipPage.gotoPreviousPage();
+        console.log("flippage state:" + this.flipPage.state.page);
 
         if (this.state.index > 0){
           let j = this.state.index - 1;
-          this.setState( {index: j } );
+          this.setState( {address: pages[j].address, index: j } );
         }
   
-        console.log("current page:" + this.state.index)
+        console.log("current index:" + this.state.index)
       }
 
     handleClick = event => {
@@ -82,7 +84,7 @@ class Flipbook extends React.Component {
         {this.state.clicked === false ? (
           <div>
           <div style={{position: "absolute", zIndex: "2", height: window.innerHeight*0.8, width: window.innerWidth*0.4,float:"left"}}>
-              <Halfpano address={pages[this.state.index].address}/>
+              <Halfpano address={this.state.address}/>
           </div>
 
           <FlipPage style={{position: "relative"}} animationDuration={500} perspective="50em" orientation="horizontal" width={this.props.width} height={this.props.height} disableSwipe={true} ref={(component) => { this.flipPage = component; }} >
@@ -100,7 +102,8 @@ class Flipbook extends React.Component {
           <button onClick={this.gotoNextPage}>Go to next page</button>
 
         </div>)
-        : (<><Panorama address={this.state.address}/><button style={{zIndex:"100", position: "fixed", top: "2em"}} onClick={this.handleClick}>Go back!</button>
+        : (<><Panorama address={this.state.address}/>
+        <button style={{zIndex:"100", position: "fixed", top: "1em"}} onClick={this.handleClick}>Go back</button>
         <Subtitle text={(pages[this.state.index].text).split(".")}/>
         </>)});
       </div>)

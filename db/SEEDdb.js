@@ -27,6 +27,7 @@ const bookSeed = [
     description:
       "Mia found an apartment, a room for rent in the Sunset in a house whose plaster was the color of sea salt, with a stern and elderly landlady who eyed her stomach and asked only, “There going to be an angry husband knocking on my door in a week?” For the last three months of her pregnancy, Mia walked the city, circling the lagoon in Golden Gate Park, climbing Coit Tower, one day crossing the Golden Gate Bridge in a fog so dense she could hear, but not see, the traffic rushing alongside her. The fog mirrored her state of mind so perfectly she felt as if she were walking through her own brain: a haze of formless, pervasive emotion, nothing she could grasp, but full of looming thoughts that appeared from nowhere, startling her, then receded into whiteness again before she was even sure what she had seen.",
   },
+
   {
     title: "Foucault’s Pendulum",
     author: "Umberto Eco",

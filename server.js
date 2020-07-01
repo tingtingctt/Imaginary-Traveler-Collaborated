@@ -23,17 +23,15 @@ function shouldCompress (req, res) {
   // fallback to standard filter function
   return compression.filter(req, res)
 }
-require('./routes/auth')(app);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+require('./routes/auth')(app);
 app.use(routes);
 
 // Syncing our database and logging a message to the user upon success
-// db.sequelize.sync({force:false}).then(function() {
-  app.listen(PORT, function() {
-    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
-  });
-// });
+app.listen(PORT, function() {
+  console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+});
 
 
