@@ -42,8 +42,18 @@ function Search() {
     event.preventDefault();
   };
 
+
+
   return (
+
+
+
     <div>
+
+    <a href={`/mybookshelf`}> 
+      <p style={{position: "fixed", top: "1em", right: "1em", color:"black", zIndex: 3}}>My Bookshelf</p>
+    </a>
+
       <div style={{lineHeight:"200%", display: 'flex',  justifyContent:'center', alignItems:'center', height: window.innerHeight*0.8, width: window.innerWidth*0.4,float:"right", marginRight: "2em"}}>
         {text}
       </div>
@@ -53,15 +63,31 @@ function Search() {
       </div>   
 
 
-        <SearchForm
-          handleInputChange={handleTextChange}
-          results={text}
-        />
 
-
-    <form onSubmit={handleAddressChange}>
+    <form>
       <div className="form-group">
-        <label htmlFor="language">Enter Address:</label>
+        <input
+          // value={props.search}
+          onChange={handleTextChange}
+          name="term"
+          list="term"
+          type="text"
+          className="form-control"
+          placeholder="Type paragraph here"
+          id="term"
+        />
+      </div>
+
+
+      <div className="form-group">
+            <select class="custom-select" id="pref-input" aria-label="Example select with button addon">
+              <option selected>Select Book</option>
+              <option value="gasby">The Great Gasby</option>
+              <option value="fire">Little Fires Everywhere</option>
+            </select>
+      </div>
+
+      <div className="form-group">
         <input
           // value={address}
           // onChange={handleAddressChange}
@@ -74,11 +100,11 @@ function Search() {
           id="term"
         />
       </div>
+
+      <button type="submit" className="btn btn-default">Add Paragraph</button>
+
+      <button onClick={handleAddressChange} className="btn btn-default">Preview Panorama</button>
     </form>
-
-
-
-         
 
 
 
