@@ -6,7 +6,7 @@ import FlipPage from 'react-flip-page';
 import Subtitle from '../Subtitle';
 
 
-
+const books = []
 const pages = [
   {
     "index": 0,
