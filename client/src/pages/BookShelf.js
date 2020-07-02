@@ -37,7 +37,7 @@ function BookShelf(props) {
                     <div className="Background">
                         <div className="Alburquerque">
                             {/* JSX Template Literal Example */}
-                            <a href={`/${books[0].title}`}> 
+                            <a href={`books/${books[0].title}`}> 
                                 < img src={alburquerque} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "81vw", "top" : "7vh"}} alt="Alburquerque"/>
                             </a>
                         </div>
@@ -48,7 +48,9 @@ function BookShelf(props) {
                             < img src={dracula} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "17vw", "top" : "8vh"}} alt="Dracula"/>
                         </div>  
                         <div className="Foucault">
-                            < img src={foucault} style={{"width" : "9vw", "height" : "26vh", "position": "absolute", "left" : "37vw", "top" : "5vh"}} alt="Foucault's Pendulum"/>
+                            <a href={`books/Foucault’s Pendulum`}> 
+                                < img src={foucault} style={{"width" : "9vw", "height" : "26vh", "position": "absolute", "left" : "37vw", "top" : "5vh"}} alt="Foucault's Pendulum"/>
+                            </a>
                        </div>                                                             
                     {/* </Row> */}
                     {/* <Row> */}

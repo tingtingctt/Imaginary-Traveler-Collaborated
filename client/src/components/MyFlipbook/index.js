@@ -5,8 +5,6 @@ import Panorama from '../Panorama';
 import FlipPage from 'react-flip-page';
 import Subtitle from '../Subtitle';
 
-
-
 const pages = [
   {
     "index": 0,
@@ -43,28 +41,15 @@ class Flipbook extends React.Component {
       // address: "31 rue saint louis en l'ile, 75004 Paris, France",
       index: 0
     }
-
-    async componentDidMount() {    
-      const response = await fetch('/api/books');
-      const data = await response.json();
-      books = data.filter((book) => book.title === this.props.title);
-      this.setState( {address: books[0].location} );
-      console.log(this.state);
-      console.log("Books", books);
-
-    }
   
     gotoNextPage() {
       this.flipPage.gotoNextPage();
 
-      if (this.state.index < books.length-1){
-        let j = this.state.index + 1;
-        // this.setState( {address: pages[j].address, index: j } );
-        this.setState( {address: books[j].location, index: j } );
-
+      if (this.state.index < pages.length-1){
+        let j = this.flipPage.state.page +1;
+        this.setState( { index: j } );
       }
 
-      console.log("current index:" + this.state.index)
     }
 
     gotoPreviousPage() {
@@ -100,9 +85,9 @@ class Flipbook extends React.Component {
 
           <FlipPage style={{position: "relative"}} animationDuration={500} perspective="50em" orientation="horizontal" width={this.props.width} height={this.props.height} disableSwipe={true} ref={(component) => { this.flipPage = component; }} >
 
-            {books.map(page => (
-              <FlipChild key={page._id} handleClick={this.handleClick} address={page.location} height={this.props.height} width={this.props.width*0.4}>
-                {page.paragraph}
+            {pages.map(page => (
+              <FlipChild key={page.index} handleClick={this.handleClick} address={page.address} height={this.props.height} width={this.props.width*0.4}>
+                {page.text}
               </FlipChild>
               ))}
             
@@ -112,7 +97,6 @@ class Flipbook extends React.Component {
           <button onClick={this.gotoPreviousPage}>Go to previous page</button>
           <button onClick={this.gotoNextPage}>Go to next page</button>
 
-
         </div>
 
         {this.state.clicked === false ? 
@@ -121,13 +105,12 @@ class Flipbook extends React.Component {
         
         <>
           <Panorama style={{zIndex:"3", position: "fixed", top: 0, left: 0}} address={pages[this.state.index].address}/>
-          <button style={{zIndex:"100", position: "fixed", top: "1em"}} onClick={this.handleClick}>Go back</button>
+            <button style={{zIndex:"100", position: "fixed", top: "1em"}} onClick={this.handleClick}>Go back</button>
           <Subtitle text={(pages[this.state.index].text).split(".")}/>
 
         </>)
        }); 
       </div>)
-
     }
   }
 
