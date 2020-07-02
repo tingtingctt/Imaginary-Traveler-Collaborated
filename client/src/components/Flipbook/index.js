@@ -6,7 +6,12 @@ import FlipPage from 'react-flip-page';
 import Subtitle from '../Subtitle';
 
 
-let books = [];    
+let books = [
+  {
+    location: "",
+    description: ""
+  }
+];
 
 const pages = [
   {
@@ -41,7 +46,7 @@ class Flipbook extends React.Component {
 
     state = {
       clicked: false,
-      // address: "31 rue saint louis en l'ile, 75004 Paris, France",
+      address: "31 rue saint louis en l'ile, 75004 Paris, France",
       index: 0
     }
 
@@ -94,7 +99,7 @@ class Flipbook extends React.Component {
 
           <div>
           <div style={{position: "absolute", zIndex: "2", height: window.innerHeight*0.8, width: window.innerWidth*0.4,float:"left"}}>
-              <Halfpano address={pages[this.state.index].address}/>
+              <Halfpano address={this.state.address}/>
           </div>
 
           <button onClick={this.handleClick} value={pages[this.state.index].address} style={{position: "absolute", zIndex: "20", left: "50%"}}>FullPano</button>
@@ -103,7 +108,7 @@ class Flipbook extends React.Component {
 
             {books.map(page => (
               <FlipChild key={page._id} handleClick={this.handleClick} address={page.location} height={this.props.height} width={this.props.width*0.4}>
-                {page.paragraph}
+                {page.description}
               </FlipChild>
               ))}
             
@@ -125,9 +130,9 @@ class Flipbook extends React.Component {
           <Subtitle text={(pages[this.state.index].text).split(".")}/>
 
         </>)
-       }); 
-      </div>)
-    }
+       } 
+      </div>
+    )}
   }
 
   export default Flipbook;

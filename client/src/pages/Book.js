@@ -16,20 +16,11 @@ function Book() {
       w: window.innerWidth
   })
 
-  const [books, setBooks] = useState([])
+  // const [books, setBooks] = useState([])
 
   useEffect(() => {
-    window.addEventListener("resize", ()=>(console.log("IM CHANGING!"), setWindowSize({h:window.innerHeight,w:window.innerWidth})));
-    
-    fetch('/api/books')
-    .then(response => response.json())
-    .then(data => setBooks(data.filter((book) => book.title === title)));
-    
+    window.addEventListener("resize", ()=>(console.log("IM CHANGING!"), setWindowSize({h:window.innerHeight,w:window.innerWidth})));    
   }, [])
-  
-  console.log(books);
-  // console.log(books.filter((book) => book.title === title));
-  // const book = books.filter((book) => book.title === title);
 
 
 

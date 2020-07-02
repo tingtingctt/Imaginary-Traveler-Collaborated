@@ -12,7 +12,7 @@ function Halfpano(props){
   useEffect(()=> {
     setAddress(props.address);
     console.log(props.address)
-  },[address])
+  },[props.address])
 
   return (
       <StreetView mapStyle={{height: window.innerHeight*0.8, width: window.innerWidth*0.4}} address={address} APIkey="AIzaSyD5QSvqKdaT_p-MglqLosMmhZPbPCE5Wns" streetView zoomLevel={15}/>
