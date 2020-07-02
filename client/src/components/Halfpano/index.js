@@ -12,7 +12,7 @@ function Halfpano(props){
   useEffect(()=> {
     setAddress(props.address);
     console.log(props.address)
-  },[address])
+  },[props.address])
 
   return (
   

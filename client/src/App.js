@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import Subtitle from "./components/Subtitle";
@@ -16,15 +16,22 @@ import Bookshelf from "./pages/BookShelf";
 import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import {getCurrentUser} from "./utils/API";
+import {userContext} from "./utils/appContext";
 
 function App() {
+  const [user, setUser] = useState(null);
+  useEffect(()=>{
+    getCurrentUser().then(({data})=> setUser(data))
+  },[])
   return (
     <Router>
+      <userContext.Provider value={{user}}>
       <div className="App">
        
         <Switch>
           <Route exact path="/">
-            <p>Navbar</p>
+      <p>Welcome {user?.email || "Stranger"}!</p>
           </Route>
           <Route exact path="/login">
             <Login/>
@@ -63,6 +70,7 @@ function App() {
           <Route component={NoMatch} />
         </Switch>
       </div>
+      </userContext.Provider>
     </Router>
   );
 }

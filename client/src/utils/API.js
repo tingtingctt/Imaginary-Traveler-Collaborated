@@ -1,20 +1,18 @@
 import axios from "axios";
 
-export default {
+
   // Gets all books
-  getBooks: function(q) {
-    return axios.get("/api/google", { params: { q: "title:" + q } });
-  },
+  export const getBooks = q => axios.get(`/api/google/search?title=${q}`);
   // Gets the book with the given id
-  getBook: function(id) {
-    return axios.get("/api/books/" + id);
-  },
+  export const getBook = id => axios.get("/api/books/" + id);
   // Deletes the book with the given id
-  deleteBook: function(id) {
-    return axios.delete("/api/books/" + id);
-  },
+  export const deleteBook = id => axios.delete("/api/books/" + id);
   // Saves a book to the database
-  saveBook: function(bookData) {
-    return axios.post("/api/books", bookData);
-  }
-};
+  export const saveBook = data => axios.post("/api/books", data);
+
+  export const getCurrentUser = () => axios.get("/auth/user_data")
+  export const login = data => axios.post("/auth/login", data);
+  export const signup = data => axios.post("/auth/signup", data);
+  export const addFav = (bid,uid) => axios.put(`/api/books/${bid}/${uid}`);
+  export const deleteFav = (bid,uid) => axios.delete(`/api/books/${bid}/${uid}`)
+
