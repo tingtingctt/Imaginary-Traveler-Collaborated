@@ -5,6 +5,7 @@ import Panorama from '../Panorama';
 import FlipPage from 'react-flip-page';
 import Subtitle from '../Subtitle';
 
+
 const pages = [
   {
     "index": 0,
@@ -103,7 +104,8 @@ class Flipbook extends React.Component {
         : (<><Panorama address={this.state.address}/><button style={{zIndex:"100", position: "fixed", top: "2em"}} onClick={this.handleClick}>Go back!</button>
         <Subtitle text={(pages[this.state.index].text).split(".")}/>
         </>)});
-      </div>)
+      </div>
+      )
     }
   }
 
