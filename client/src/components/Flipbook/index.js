@@ -38,40 +38,34 @@ class Flipbook extends React.Component {
 
     state = {
       clicked: false,
-      address: "31 rue saint louis en l'ile, 75004 Paris, France",
+      // address: "31 rue saint louis en l'ile, 75004 Paris, France",
       index: 0
     }
   
     gotoNextPage() {
       this.flipPage.gotoNextPage();
-      console.log("flippage state:" + this.flipPage.state.page);
 
       if (this.state.index < pages.length-1){
-        let j = this.state.index + 1;
-        this.setState( {address: pages[j].address, index: j } );
+        let j = this.flipPage.state.page +1;
+        this.setState( { index: j } );
       }
 
-      console.log("current index:" + this.state.index)
     }
 
     gotoPreviousPage() {
         this.flipPage.gotoPreviousPage();
-        console.log("flippage state:" + this.flipPage.state.page);
 
         if (this.state.index > 0){
-          let j = this.state.index - 1;
-          this.setState( {address: pages[j].address, index: j } );
+          let j = this.flipPage.state.page-1;
+          this.setState( { index: j } );
         }
   
-        console.log("current index:" + this.state.index)
       }
 
     handleClick = event => {
-      let clickedAddress = event.target.value;
 
       if(this.state.clicked  === false) {
-        console.log("clicked" + clickedAddress)
-        return this.setState({clicked: true, address: clickedAddress });
+        return this.setState({clicked: true});
       } 
       if(this.state.clicked === true)  {
         return this.setState({clicked: false});
@@ -84,8 +78,10 @@ class Flipbook extends React.Component {
         {this.state.clicked === false ? (
           <div>
           <div style={{position: "absolute", zIndex: "2", height: window.innerHeight*0.8, width: window.innerWidth*0.4,float:"left"}}>
-              <Halfpano address={this.state.address}/>
+              <Halfpano address={pages[this.state.index].address}/>
           </div>
+
+          <button onClick={this.handleClick} value={pages[this.state.index].address} style={{position: "absolute", zIndex: "20", left: "50%"}}>FullPano</button>
 
           <FlipPage style={{position: "relative"}} animationDuration={500} perspective="50em" orientation="horizontal" width={this.props.width} height={this.props.height} disableSwipe={true} ref={(component) => { this.flipPage = component; }} >
 
@@ -102,7 +98,7 @@ class Flipbook extends React.Component {
           <button onClick={this.gotoNextPage}>Go to next page</button>
 
         </div>)
-        : (<><Panorama address={this.state.address}/>
+        : (<><Panorama address={pages[this.state.index].address}/>
         <button style={{zIndex:"100", position: "fixed", top: "1em"}} onClick={this.handleClick}>Go back</button>
         <Subtitle text={(pages[this.state.index].text).split(".")}/>
         </>)});
