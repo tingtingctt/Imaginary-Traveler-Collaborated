@@ -11,6 +11,9 @@ import Login from "./components/Login"
 import Bookfloat from "./components/Bookfloat"
 import Signup from "./components/Signup"
 import Bookshelf from "./pages/BookShelf";
+import Saved from "./pages/Saved";
+import NoMatch from "./pages/NoMatch";
+import Nav from "./components/Nav";
 
 function App() {
   return (
@@ -46,10 +49,8 @@ function App() {
           <p>My Bookshelf</p>
           <Mybookshelf/>
           </Route>
-                      
-          <Route>
-            <p>No Match Route</p>
-          </Route>
+          <Route exact path="/saved" component={Saved} />           
+          <Route component={NoMatch} />
         </Switch>
       </div>
     </Router>
