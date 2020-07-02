@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-// import API from "../../utils/API";
 
-
+import API from "../utils/API";
 import Halfpano from "../components/Halfpano";
 
 
@@ -9,8 +8,19 @@ import Halfpano from "../components/Halfpano";
 function Search() {
   const [text, setText] = useState("Book Text");
   const [address, setAddress] = useState("Paris Notre-Dame -- Place Jean-Paul-II, Paris, France");
+  const [book, setBook] = useState("Frankenstein");
+  const [books, setBooks] = useState([]);
 
 
+  useEffect(() => {
+    //Get list of books available to add to
+    API.getBooks().then(res => {
+      //Remove duplicates (caused by multiple entries for one book)
+      const titles = res.data.map(book => book.title);
+      const uniques = new Set(titles)
+      setBooks([...uniques])
+    })
+  }, [])
 
   // useEffect(() => {
   //   if (!search) {
@@ -37,10 +47,24 @@ function Search() {
 
 
   const handleAddressChange = event => {
-
-    setAddress(event.target.value);
     event.preventDefault();
+    setAddress(event.target.value);
+    console.log(event.target.value);
   };
+
+  const handleBookChange = event => {
+    console.log(event.target.value);
+    setBook(event.target.value);
+  }
+
+  const handleSave = () => {
+    console.log("Book", book);
+    console.log("Entry", text);
+    console.log("Address", address);
+    console.log("Books", books);
+    //Not working, need POST route for adding entries
+    API.saveBook({title: book, location: address, description: text}).then(res => console.log(res));
+  }
 
 
 
@@ -80,17 +104,20 @@ function Search() {
 
 
       <div className="form-group">
-            <select class="custom-select" id="pref-input" aria-label="Example select with button addon">
-              <option selected>Select Book</option>
-              <option value="gasby">The Great Gasby</option>
-              <option value="fire">Little Fires Everywhere</option>
+            <select onChange={handleBookChange} className="custom-select" id="pref-input" aria-label="Example select with button addon">
+              <option disabled selected>Select Book</option>
+              {books.map(book => (
+                <option value={book} key={book}>{book}</option>
+              ))}
+              {/* <option value="gasby">The Great Gasby</option>
+              <option value="fire">Little Fires Everywhere</option> */}
             </select>
       </div>
 
       <div className="form-group">
         <input
           // value={address}
-          // onChange={handleAddressChange}
+          onChange={handleAddressChange}
 
           name="term"
           list="term"
@@ -101,9 +128,12 @@ function Search() {
         />
       </div>
 
-      <button type="submit" className="btn btn-default">Add Paragraph</button>
+      <button onClick={handleSave} type="button" className="btn btn-default">Save</button>
 
-      <button onClick={handleAddressChange} className="btn btn-default">Preview Panorama</button>
+
+      {/* <button type="submit" className="btn btn-default">Add Paragraph</button> */}
+
+      {/* <button value={address} onClick={handleAddressChange} className="btn btn-default">Preview Panorama</button> */}
     </form>
 
 
