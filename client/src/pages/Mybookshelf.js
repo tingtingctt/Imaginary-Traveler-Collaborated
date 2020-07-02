@@ -3,7 +3,7 @@ import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card";
 import Form from "../components/Form";
 import Book from "../components/Book";
-import API from "../utils/API";
+import {getBooks,saveBook} from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List } from "../components/List";
 
@@ -23,7 +23,7 @@ class Mybookshelf extends Component {
     };
   
     getBooks = () => {
-      API.getBooks(this.state.q)
+      getBooks(this.state.q)
         .then(res =>
           this.setState({
             books: res.data
@@ -45,7 +45,7 @@ class Mybookshelf extends Component {
     handleBookSave = id => {
       const book = this.state.books.find(book => book.id === id);
   
-      API.saveBook({
+      saveBook({
         googleId: book.id,
         title: book.volumeInfo.title,
         subtitle: book.volumeInfo.subtitle,
