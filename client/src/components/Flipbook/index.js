@@ -75,7 +75,7 @@ class Flipbook extends React.Component {
     render() {
       return (
         <div>
-        {this.state.clicked === false ? (
+
           <div>
           <div style={{position: "absolute", zIndex: "2", height: window.innerHeight*0.8, width: window.innerWidth*0.4,float:"left"}}>
               <Halfpano address={pages[this.state.index].address}/>
@@ -97,11 +97,19 @@ class Flipbook extends React.Component {
           <button onClick={this.gotoPreviousPage}>Go to previous page</button>
           <button onClick={this.gotoNextPage}>Go to next page</button>
 
-        </div>)
-        : (<><Panorama address={pages[this.state.index].address}/>
-        <button style={{zIndex:"100", position: "fixed", top: "1em"}} onClick={this.handleClick}>Go back</button>
-        <Subtitle text={(pages[this.state.index].text).split(".")}/>
-        </>)});
+        </div>
+
+        {this.state.clicked === false ? 
+        (<></>)
+        : (
+        
+        <>
+          <Panorama style={{zIndex:"3", position: "fixed", top: 0, left: 0}} address={pages[this.state.index].address}/>
+          <button style={{zIndex:"100", position: "fixed", top: "1em"}} onClick={this.handleClick}>Go back</button>
+          <Subtitle text={(pages[this.state.index].text).split(".")}/>
+
+        </>)
+       }); 
       </div>)
     }
   }
