@@ -17,6 +17,16 @@ import Row from "../components/Row"
 import "../components/Background/style.css";
 
 function BookShelf(props) {
+    // mock API call
+    const books = [
+        {
+            title: "Alburquerque"
+        },
+        {
+            title: "BigSleep"
+        }
+    ]
+
 
     return (
         // <Wrapper>
@@ -26,7 +36,10 @@ function BookShelf(props) {
                     {/* <Row> */}
                     <div className="Background">
                         <div className="Alburquerque">
-                            < img src={alburquerque} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "81vw", "top" : "7vh"}} alt="Alburquerque"/>
+                            {/* JSX Template Literal Example */}
+                            <a href={`books/${books[0].title}`}> 
+                                < img src={alburquerque} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "81vw", "top" : "7vh"}} alt="Alburquerque"/>
+                            </a>
                         </div>
                         <div className="BigSleep">
                             < img src={bigSleep} style={{"width" : "9vw", "height" : "22.5vh", "position": "absolute", "left" : "59vw", "top" : "9vh"}} alt="The Big Sleep"/>
@@ -35,8 +48,10 @@ function BookShelf(props) {
                             < img src={dracula} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "17vw", "top" : "8vh"}} alt="Dracula"/>
                         </div>  
                         <div className="Foucault">
-                            < img src={foucault} style={{"width" : "9vw", "height" : "26vh", "position": "absolute", "left" : "37vw", "top" : "5vh"}} alt="Foucault's Pendulum"/>
-                        </div>                                                             
+                            <a href={`books/Foucault’s Pendulum`}> 
+                                < img src={foucault} style={{"width" : "9vw", "height" : "26vh", "position": "absolute", "left" : "37vw", "top" : "5vh"}} alt="Foucault's Pendulum"/>
+                            </a>
+                       </div>                                                             
                     {/* </Row> */}
                     {/* <Row> */}
                         <div className="Gatsby">
@@ -46,7 +61,10 @@ function BookShelf(props) {
                             < img src={guns} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "53vw", "top" : "38.5vh"}} alt="The Guns of August"/>
                         </div>
                         <div className="Hunchback">
-                            < img src={hunchback} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "10vw", "top" : "39vh"}} alt="The Hunchback of Notre Dame"/>
+                            {/* animation and settime out, JSX Template Literal not working */}
+                            <a href="javascript:setTimeout(()=>{window.location = '/1' },2000);"> 
+                                <img id="hunch" src={hunchback} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "10vw", "top" : "39vh"}} alt="The Hunchback of Notre Dame"/>
+                            </a>                                              
                         </div>  
                         <div className="Kingbird">
                             < img src={kingbird} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "32vw", "top" : "39vh"}} alt="Kingbird Highway"/>
@@ -54,7 +72,7 @@ function BookShelf(props) {
                     {/* </Row> */}
                     {/* <Row> */}
                         <div className="Little">
-                            < img src={littleFires} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "81vw", "top" : "71vh"}} alt="Little Fires Everywhere"/>
+                            < img id="bridge" src={littleFires} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "81vw", "top" : "71vh"}} alt="Little Fires Everywhere"/>
                         </div>
                         <div className="Play">
                             < img src={play} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "59vw", "top" : "71vh"}} alt="Play It As It Lays"/>
