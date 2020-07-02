@@ -13,6 +13,7 @@ let books = [
   }
 ];
 
+
 const pages = [
   {
     "index": 0,
@@ -118,6 +119,7 @@ class Flipbook extends React.Component {
           <button onClick={this.gotoPreviousPage}>Go to previous page</button>
           <button onClick={this.gotoNextPage}>Go to next page</button>
 
+
         </div>
 
         {this.state.clicked === false ? 
@@ -133,6 +135,7 @@ class Flipbook extends React.Component {
        } 
       </div>
     )}
+
   }
 
   export default Flipbook;

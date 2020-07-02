@@ -26,6 +26,9 @@ function shouldCompress (req, res) {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(session({secret: "books", saveUninitialized: true, resave: true}));
+app.use(passport.initialize());
+app.use(passport.session())
 require('./routes/auth')(app);
 app.use(routes);
 

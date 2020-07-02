@@ -15,7 +15,8 @@ function Halfpano(props){
   },[props.address])
 
   return (
-      <StreetView mapStyle={{height: window.innerHeight*0.8, width: window.innerWidth*0.4}} address={address} APIkey="AIzaSyD5QSvqKdaT_p-MglqLosMmhZPbPCE5Wns" streetView zoomLevel={15}/>
+  
+      <StreetView mapStyle={{height: window.innerHeight*0.7, width: window.innerWidth*0.35}} address={address} APIkey="AIzaSyD5QSvqKdaT_p-MglqLosMmhZPbPCE5Wns" streetView zoomLevel={15}/>
       
       // <StreetView latLang ={{lat: 48.8530, lng: 2.3499}} APIkey="AIzaSyD5QSvqKdaT_p-MglqLosMmhZPbPCE5Wns" streetView zoomLevel={15}/>
 
