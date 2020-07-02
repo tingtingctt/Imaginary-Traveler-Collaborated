@@ -105,7 +105,7 @@ class Flipbook extends React.Component {
         
         <>
           <Panorama style={{zIndex:"3", position: "fixed", top: 0, left: 0}} address={pages[this.state.index].address}/>
-          <button style={{zIndex:"100", position: "fixed", top: "1em"}} onClick={this.handleClick}>Go back</button>
+            <button style={{zIndex:"100", position: "fixed", top: "1em"}} onClick={this.handleClick}>Go back</button>
           <Subtitle text={(pages[this.state.index].text).split(".")}/>
 
         </>)

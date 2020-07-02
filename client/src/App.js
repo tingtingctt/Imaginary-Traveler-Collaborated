@@ -4,8 +4,12 @@ import './App.css';
 import Subtitle from "./components/Subtitle";
 import Panorama from "./components/Panorama";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Book from './pages/Book';
-import Mybookshelf from './pages/Mybookshelf';
+
+import Book from './pages/Book'
+import MyBook from './pages/MyBook'
+import Search from './pages/Search'
+
+import Mybookshelf from './pages/Mybookshelf'
 import Openbook from "./components/Openbook";
 import Login from "./components/Login"
 import Bookfloat from "./components/Bookfloat"
@@ -38,8 +42,15 @@ function App() {
           </Route>
 
           <Route exact path="/openbook">
-            <Openbook/>
             <Book/>
+          </Route>
+
+          <Route exact path="/mybook">
+            <MyBook/>
+          </Route>
+
+          <Route exact path="/search">
+            <Search/>
           </Route>
 
           <Route exact path="/mybookshelf">
