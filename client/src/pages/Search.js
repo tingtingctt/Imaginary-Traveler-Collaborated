@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 
 
-import API from "../utils/API";
+import * as API from "../utils/API";
 
 import Halfpano from "../components/Halfpano";
 

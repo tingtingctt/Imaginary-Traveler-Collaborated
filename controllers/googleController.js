@@ -8,11 +8,9 @@ const db = require("../models");
 // It also makes sure that the books returned from the API all contain a title, author, link, description, and image
 module.exports = {
   findAll: function(req, res) {
-    const { query: params } = req;
+    const { query: {q} } = req;
     axios
-      .get("https://www.googleapis.com/books/v1/volumes", {
-        params
-      })
+      .get(`https://www.googleapis.com/books/v1/volumes?q=${q}`)
       .then(results =>
         results.data.items.filter(
           result =>
@@ -27,15 +25,17 @@ module.exports = {
       .then(apiBooks =>
         db.Book.find().then(dbBooks =>
           apiBooks.filter(apiBook =>
-            dbBooks.every(dbBook => dbBook.googleId.toString() !== apiBook.id)
+            dbBooks.every(dbBook => dbBook.id.toString() !== apiBook.id)
           )
         )
       )
       .then(books => {
           console.log(books[0])
-          db.Book.bulkCreate(books).then(data=> console.log(data))
+          db.Book.collection.insertMany(books).then(data=> {
+            res.json(books)
+          })
           .catch(err=>console.log(err))
       })
-      .catch(err => res.status(422).json(err));
+      .catch(err => console.log(err));
   }
 };
