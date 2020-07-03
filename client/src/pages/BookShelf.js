@@ -42,7 +42,9 @@ function BookShelf(props) {
                             </a>
                         </div>
                         <div className="BigSleep">
+                        <a href={`books/The Big Sleep`}> 
                             < img id="sleep" src={bigSleep} style={{"width" : "9vw", "height" : "22.5vh", "position": "absolute", "left" : "59vw", "top" : "9vh"}} alt="The Big Sleep"/>
+                        </a>
                         </div>
                         <div className="Dracula">
                             < img id="dracula" src={dracula} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "17vw", "top" : "8vh"}} alt="Dracula"/>
@@ -62,7 +64,7 @@ function BookShelf(props) {
                         </div>
                         <div className="Hunchback">
                             {/* animation and settime out, JSX Template Literal not working */}
-                            <a href="javascript:setTimeout(()=>{window.location = '/1' },2000);"> 
+                            <a href="javascript:setTimeout(()=>{window.location = 'The Hunchback of Notre Dame' },2000);"> 
                                 <img id="hunch" src={hunchback} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "10vw", "top" : "39vh"}} alt="The Hunchback of Notre Dame"/>
                             </a>                                              
                         </div>  

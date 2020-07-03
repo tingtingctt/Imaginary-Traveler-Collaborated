@@ -46,7 +46,6 @@ function App() {
           </Route>
 
           <Route exact path="/books/:title">
-            <p>Book ID Route</p>
             <Book/>
           </Route>
 
@@ -63,7 +62,6 @@ function App() {
           </Route>
 
           <Route exact path="/mybookshelf">
-          <p>My Bookshelf</p>
           <Mybookshelf/>
           </Route>
           <Route exact path="/saved" component={Saved} />           

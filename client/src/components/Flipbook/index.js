@@ -1,11 +1,7 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Halfpano from "../Halfpano";
-import FlipChild from "../Flipchild";
 import Panorama from '../Panorama';
-import FlipPage from 'react-flip-page';
 import Subtitle from '../Subtitle';
-
-
 
 
 let books = [
@@ -14,7 +10,6 @@ let books = [
     description: ""
   }
 ];
-
 
 
 const pages = [
@@ -40,12 +35,12 @@ const pages = [
   }
 ]
 
+
+
 class Flipbook extends React.Component {
     constructor(props) {
       super(props);
       
-      this.gotoNextPage = this.gotoNextPage.bind(this);
-      this.gotoPreviousPage = this.gotoPreviousPage.bind(this);
     }
 
     state = {
@@ -59,18 +54,17 @@ class Flipbook extends React.Component {
       const data = await response.json();
       books = data.filter((book) => book.title === this.props.title);
       this.setState( {address: books[0].location} );
+
       console.log(this.state);
       console.log("Books", books);
 
     }
   
     gotoNextPage() {
-      this.flipPage.gotoNextPage();
 
       if (this.state.index < books.length-1){
         let j = this.state.index + 1;
-        // this.setState( {address: pages[j].address, index: j } );
-        this.setState( {address: books[j].location, index: j } );
+        this.setState( { address: books[j].location, index: j } );
 
       }
 
@@ -78,16 +72,15 @@ class Flipbook extends React.Component {
     }
 
     gotoPreviousPage() {
-        this.flipPage.gotoPreviousPage();
 
         if (this.state.index > 0){
-          let j = this.flipPage.state.page-1;
-          this.setState( { index: j } );
+          let j = this.state.index -1;
+          this.setState( { address: books[j].location, index: j } );
         }
   
       }
 
-    handleClick = event => {
+    handleClick = () => {
 
       if(this.state.clicked  === false) {
         return this.setState({clicked: true});
@@ -101,38 +94,30 @@ class Flipbook extends React.Component {
       return (
         <div>
 
-          <div>
-          <div style={{position: "absolute", zIndex: "2", height: window.innerHeight*0.8, width: window.innerWidth*0.4,float:"left"}}>
+        {this.state.clicked === false ? 
+        (<>
+          <button onClick={this.handleClick} value={this.state.address} style={{position: "fixed", zIndex: "20", left: "50%"}}>FullPano</button>
+
+          <div style={{transform: "skewY(-2.2deg)", paddingRight:"12%", float: "left", display: 'flex',  justifyContent:'center', zIndex: "2", height: window.innerHeight*0.8, width: window.innerWidth*0.4}}>
               <Halfpano address={this.state.address}/>
           </div>
 
-          <button onClick={this.handleClick} value={pages[this.state.index].address} style={{position: "absolute", zIndex: "20", left: "50%"}}>FullPano</button>
 
-          <FlipPage style={{position: "relative"}} animationDuration={500} perspective="50em" orientation="horizontal" width={this.props.width} height={this.props.height} disableSwipe={true} ref={(component) => { this.flipPage = component; }} >
+          <div style={{transform: "skewY(2deg)", paddingLeft:"5%", float: "right", lineHeight:"200%", justifyContent:'center', display: "flex", alignItems:'center', height: window.innerHeight*0.8, width: window.innerWidth*0.3}}>
+            {books[this.state.index].description}
+          </div>
 
-            {books.map(page => (
-              <FlipChild key={page._id} handleClick={this.handleClick} address={page.location} height={this.props.height} width={this.props.width*0.4}>
-                {page.description}
-              </FlipChild>
-              ))}
-            
-          </FlipPage>
+          <br/>     
 
-          <br/>
-          <button onClick={this.gotoPreviousPage}>Go to previous page</button>
-          <button onClick={this.gotoNextPage}>Go to next page</button>
-
-
-        </div>
-
-        {this.state.clicked === false ? 
-        (<></>)
+          <button style={{transform: "skewY(-2.3deg)", marginRight: "20%"}} onClick={this.gotoPreviousPage}>Go to previous page</button>
+          <button style={{transform: "skewY(2deg)", marginLeft: "20%"}} onClick={this.gotoNextPage}>Go to next page</button>
+          </>)
         : (
         
         <>
-          <Panorama style={{zIndex:"3", position: "fixed", top: 0, left: 0}} address={pages[this.state.index].address}/>
+          <Panorama style={{zIndex:"3", position: "fixed", top: 0, left: 0}} address={this.state.address}/>
           <button style={{zIndex:"100", position: "fixed", top: "1em"}} onClick={this.handleClick}>Go back</button>
-          <Subtitle text={(pages[this.state.index].text).split(".")}/>
+          <Subtitle text={(books[this.state.index].description).split(".")}/>
 
         </>)
        } 
@@ -141,4 +126,58 @@ class Flipbook extends React.Component {
 
   }
 
-  export default Flipbook;
+
+
+
+
+// function Flipbook(props) {
+
+
+//   const [clicked, setClick] = useState(false);
+//   const [index, setIndex] = useState(0);
+
+//   useEffect(() => {
+//     const response = await fetch('/api/books');
+//     const data = await response.json();
+//     books = data.filter((book) => book.title === this.props.title);
+//     this.setState( {address: books[0].location} );
+//     console.log(this.state);
+//     console.log("Books", books);
+//   }, [])
+
+
+  
+//   return (
+//     <div>
+//         {this.state.clicked === false ? 
+//         (<>
+//           <button onClick={this.handleClick} value={this.state.address} style={{position: "fixed", zIndex: "20", left: "50%"}}>FullPano</button>
+
+//           <div style={{transform: "skewY(-2deg)", paddingRight:"12%", float: "left", display: 'flex',  justifyContent:'center', zIndex: "2", height: window.innerHeight*0.8, width: window.innerWidth*0.4}}>
+//               <Halfpano address={this.state.address}/>
+//           </div>
+
+
+//           <div style={{transform: "skewY(2deg)", paddingLeft:"5%", float: "right", lineHeight:"200%", ustifyContent:'center', display: "flex", alignItems:'center', height: window.innerHeight*0.8, width: window.innerWidth*0.3}}>
+//             {books[this.state.index].description}
+//           </div>
+
+
+//           <button style={{transform: "skewY(-2deg)", marginRight: "20%"}} onClick={this.gotoPreviousPage}>Go to previous page</button>
+//           <button style={{transform: "skewY(2deg)", marginLeft: "20%"}}onClick={this.gotoNextPage}>Go to next page</button>
+//           </>)
+//         : (
+        
+//         <>
+//           <Panorama style={{zIndex:"3", position: "fixed", top: 0, left: 0}} address={this.state.address}/>
+//           <button style={{zIndex:"100", position: "fixed", top: "1em"}} onClick={this.handleClick}>Go back</button>
+//           <Subtitle text={(books[this.state.index].description).split(".")}/>
+
+//         </>)
+//        } 
+//       </div>
+//     )}
+
+
+
+    export default Flipbook;
