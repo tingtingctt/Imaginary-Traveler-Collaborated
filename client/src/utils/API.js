@@ -9,6 +9,7 @@ import axios from "axios";
   export const deleteBook = id => axios.delete("/api/books/" + id);
   // Saves a book to the database
   export const saveBook = data => axios.post("/api/books", data);
+  export const getSavedBooks = () => axios.get("/api/books");
 
   export const getCurrentUser = () => axios.get("/auth/user_data")
   export const login = data => axios.post("/auth/login", data);

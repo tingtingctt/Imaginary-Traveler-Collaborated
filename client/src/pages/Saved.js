@@ -2,17 +2,31 @@ import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card";
 import Book from "../components/Book";
-import {deleteBook} from "../utils/API";
+import {deleteBook,getSavedBooks} from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List } from "../components/List";
 
+
+
 class Saved extends Component {
+
+  constructor(){
+    super()
+    this.state= {books:[]}
+  }
+  componentDidMount(){
+    this.getSavedBooks()
+  }
+  getSavedBooks() {
+    getSavedBooks().then(res => this.setState({books:res.data}))
+  }
 
   handleBookDelete = id => {
     deleteBook(id).then(res => this.getSavedBooks());
   };
 
   render() {
+    console.log(this.state.books)
     return (
       <Container>
         <Row>
@@ -29,16 +43,19 @@ class Saved extends Component {
           <Col size="md-12">
             <Card title="Saved Books" icon="download">
               {this.state.books.length ? (
+            
                 <List>
-                  {this.state.books.map(book => (
+
+                  {this.state.books.map((book) => (
+
                     <Book
-                      key={book._id}
-                      title={book.title}
-                      subtitle={book.subtitle}
-                      link={book.link}
-                      authors={book.authors.join(", ")}
-                      description={book.description}
-                      image={book.image}
+                    key={book.id}
+                    title={book.volumeInfo.title}
+                    subtitle={book.volumeInfo.subtitle}
+                    link={book.volumeInfo.infoLink}
+                    authors={book.volumeInfo.authors.join(", ")}
+                    description={book.volumeInfo.description}
+                    image={book.volumeInfo.imageLinks.thumbnail}
                       Button={() => (
                         <button
                           onClick={() => this.handleBookDelete(book._id)}
