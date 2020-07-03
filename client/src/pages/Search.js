@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import * as API from "../utils/API";
 
 import Halfpano from "../components/Halfpano";
+import "../components/BookPainting/bookStyle.css";
 
 
 
@@ -13,6 +14,11 @@ function Search() {
   const [address, setAddress] = useState("Paris Notre-Dame -- Place Jean-Paul-II, Paris, France");
   const [book, setBook] = useState("Frankenstein");
   const [books, setBooks] = useState([]);
+
+  const [windowSize, setWindowSize] = useState({
+    h: window.innerHeight,
+    w: window.innerWidth
+})
 
 
   useEffect(() => {
@@ -23,6 +29,10 @@ function Search() {
       const uniques = new Set(titles)
       setBooks([...uniques])
     })
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener("resize", ()=>(console.log("IM CHANGING!"), setWindowSize({h:window.innerHeight,w:window.innerWidth})));    
   }, [])
 
   // useEffect(() => {
@@ -74,22 +84,29 @@ function Search() {
   return (
 
 
+ <div>
 
-    <div>
 
-    <a href={`/mybookshelf`}> 
-      <p style={{position: "fixed", top: "1em", right: "1em", color:"black", zIndex: 3}}>My Bookshelf</p>
-    </a>
 
-      <div style={{lineHeight:"200%", display: 'flex',  justifyContent:'center', alignItems:'center', height: window.innerHeight*0.8, width: window.innerWidth*0.4,float:"right", marginRight: "2em"}}>
+
+    <div className="BookPainting">
+
+    <div style={{}}>
+
+      <a href={`/mybookshelf`}> 
+        <p style={{position: "absolute", top: "1em", right: "1em", color:"black", zIndex: 3}}>My Bookshelf</p>
+      </a>
+
+      <div style={{transform: "skewY(2deg)", margin: "5% 16% 0% 0%", paddingLeft:"5%", float: "right", lineHeight:"200%", justifyContent:'center', display: "flex", alignItems:'center', height: window.innerHeight*0.8, width: window.innerWidth*0.3}}>
         {text}
       </div>
           
-      <div style={{margin: "2em", height: window.innerHeight*0.8, width: window.innerWidth*0.4}}>
-      <Halfpano address={address}/>  
+      <div style={{transform: "skewY(-2.2deg)", margin: "5% 0% 5% 14%", paddingRight:"5%", float: "left", display: 'flex',  justifyContent:'center', zIndex: "2", height: windowSize.h*0.8, width: windowSize.w*0.38}}>
+        <Halfpano address={address}/>  
       </div>   
+    </div>
 
-
+    </div>
 
     <form>
       <div className="form-group">
@@ -142,6 +159,7 @@ function Search() {
 
 
     </div>
+
   );
 }
 
