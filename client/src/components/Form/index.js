@@ -1,6 +1,8 @@
 import React from "react";
 
-function Form({ q, handleInputChange, handleFormSubmit }) {
+
+function Form({ q, onChange, handleFormSubmit }) {
+
   return (
     <form>
       <div className="form-group">
@@ -14,7 +16,7 @@ function Form({ q, handleInputChange, handleFormSubmit }) {
           value={q}
           placeholder="Ready Player One"
           name="q"
-          onChange={handleInputChange}
+          onChange={(e)=>onChange(e.target.value)}
           required
         />
       </div>

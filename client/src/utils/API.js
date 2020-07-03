@@ -2,7 +2,7 @@ import axios from "axios";
 
 
   // Gets all books
-  export const getBooks = q => axios.get(`/api/google/search?title=${q}`);
+  export const getBooks = q => axios.get(`/api/google?q=${q}`);
   // Gets the book with the given id
   export const getBook = id => axios.get("/api/books/" + id);
   // Deletes the book with the given id

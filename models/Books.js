@@ -27,6 +27,9 @@ const bookSchema = new Schema ({
     },
     description:{
         type:String,
+    },
+    id: {
+        type:String
     }
 });
 
