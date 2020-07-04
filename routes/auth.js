@@ -16,7 +16,7 @@ app.post("/auth/signup", (req,res)=>{
 
 app.get("/auth/user_data", (req,res)=>{
     console.log(req.user)
-    req.user ? User.findById(req.user._id).populate("books").then(data=>res.json(data)) : res.json("Not Logged In!")
+    req.user ? User.findById(req.user._id).then(data=>res.json(data)) : res.json("Not Logged In!")
 })
 
 app.get("/auth/logout", (req,res)=>{

@@ -22,12 +22,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    books: [
-        {
-        type: Schema.Types.ObjectId,
-        ref: "Book"
-        }
-    ]
+    books: {
+        type: Array,
+        default: []
+    }
 });
 
 userSchema.pre("save", function(){

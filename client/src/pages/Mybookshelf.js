@@ -12,6 +12,7 @@ export default ()=> {
   const {user} = useContext(userContext)
   const [books, setBooks] = useState([])
   const [search, setSearch] = useState("");
+  console.log(user)
   const handleSearch = (e) => {
     e.preventDefault()
     getBooks(search).then(({data}) => {
@@ -19,7 +20,7 @@ export default ()=> {
       setBooks(data)})
   };
 
-  const handleBookSave = id => saveBook(id)
+  const handleBookSave = book => saveBook(book, user._id)
 
       return (
         <Container>
@@ -57,7 +58,7 @@ export default ()=> {
                         image={book.volumeInfo.imageLinks.thumbnail}
                         Button={() => (
                           <button
-                            onClick={() => handleBookSave(book.id)}
+                            onClick={() => handleBookSave(book)}
                             className="btn btn-primary ml-2"
                           >
                             Save
