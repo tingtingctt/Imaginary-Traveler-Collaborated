@@ -21,21 +21,6 @@ module.exports = {
             result.volumeInfo.imageLinks &&
             result.volumeInfo.imageLinks.thumbnail
         )
-      )
-      .then(apiBooks =>
-        db.Book.find().then(dbBooks =>
-          apiBooks.filter(apiBook =>
-            dbBooks.every(dbBook => dbBook.id.toString() !== apiBook.id)
-          )
-        )
-      )
-      .then(books => {
-          console.log(books[0])
-          db.Book.collection.insertMany(books).then(data=> {
-            res.json(books)
-          })
-          .catch(err=>console.log(err))
-      })
-      .catch(err => console.log(err));
+      ).then(books=> res.json(books))
   }
 };

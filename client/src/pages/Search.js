@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState, useEffect, useContext} from "react";
+import {userContext} from "../utils/appContext";
 
 
 import * as API from "../utils/API";
@@ -14,6 +14,7 @@ function Search() {
   const [address, setAddress] = useState("Paris Notre-Dame -- Place Jean-Paul-II, Paris, France");
   const [book, setBook] = useState("Frankenstein");
   const [books, setBooks] = useState([]);
+  const {user} = useContext(userContext);
 
   const [windowSize, setWindowSize] = useState({
     h: window.innerHeight,
@@ -126,8 +127,8 @@ function Search() {
       <div className="form-group">
             <select onChange={handleBookChange} className="custom-select" id="pref-input" aria-label="Example select with button addon">
               <option disabled selected>Select Book</option>
-              {books.map(book => (
-                <option value={book} key={book}>{book}</option>
+              {user?.books.map(book => (
+                <option value={book.volumeInfo.title} key={book.volumeInfo.title}>{book.volumeInfo.title}</option>
               ))}
               {/* <option value="gasby">The Great Gasby</option>
               <option value="fire">Little Fires Everywhere</option> */}

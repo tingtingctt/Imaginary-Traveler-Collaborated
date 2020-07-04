@@ -21,9 +21,9 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  update: function({params}, res) {
+  update: function({params, body}, res) {
     db.User
-      .findByIdAndUpdate(params.uid, {$push:{books:params.id}})
+      .findByIdAndUpdate(params.uid, {$push:{books:body}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

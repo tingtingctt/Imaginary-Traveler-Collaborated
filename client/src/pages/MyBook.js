@@ -11,7 +11,7 @@ import {useLocation} from "react-router-dom";
 function MyBook() {
   let location = useLocation();
   // need to modify this line
-  let title = location.pathname.replace("/books/", "");
+  let title = location.pathname.replace("/mybooks/", "");
 
   const [windowSize, setWindowSize] = useState({
       h: window.innerHeight,
