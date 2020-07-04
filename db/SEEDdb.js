@@ -115,6 +115,33 @@ const bookSeed = [
       "His cathedral was enough for him. It was peopled with marble figures of kings, saints and bishops who at least did not laugh in his face and looked at him with only tranquillity and benevolence. The other statues, those of monsters and demons, had no hatred for him – he resembled them too closely for that. It was rather the rest of mankind that they jeered at. The saints were his friends and blessed him; the monsters were his friends and kept watch over him. He would sometimes spend whole hours crouched before one of the statues in solitary conversation with it. If anyone came upon him then he would run away like a lover surprised during a serenade.",
   },
   {
+    title: "The Hunchback of Notre Dame",
+    author: "Victor Hugo",
+    year:"1831",
+    location:"The river Seine, Paris, France",
+    picture: "https://image.freepik.com/free-photo/pont-neuf-vintage-color-oldest-standing-bridge-across-river-seine-paris_109442-299.jpg",
+    description:
+      "When the boatman had left him he stood on the bank, staring straight ahead in a dazed fashion.  It is not rare for the fatigue of a great sorrow to produce such an effect on the mind.  The sun had sunk below the lofty Tour de Nesle and the twilight had begun.  The sky and the water were both white.  Between them, the left bank of the Seine, on which his eyes were fixed, projected its dark mass.  Only the outlines of its houses were visible, standing out sharply against the light background of the sky and the river.",
+  },
+  {
+    title: "The Hunchback of Notre Dame",
+    author: "Victor Hugo",
+    year:"1831",
+    location:"Rue du Temple, Paris, France",
+    picture: "http://www.parisrues.com/imagesold/03/031ruedutemple01.jpg",
+    description:
+      "Just then Clopin Trouillefou came back in and cried out in a thunderous voice, “Midnight!”  At this word all the vagabonds, men, women and children, rushed out of the tavern with a great clatter of weapons and iron instruments.  The moon was behind a cloud and the Court of Miracles was in total darkness.  Not a light was showing in it but it was far from deserted.  A crowd of men and women could be distinguished, talking in low tones.  All sorts of weapons gleamed in the shadows.  Clopin Trouillefou stood up on a large stone and shouted, “Fall in!” There was agitated movement in the darkness.  The immense multitude formed itself into a single column.  After several minutes the king raised his voice again: “Now, silence in crossing the city! The password is ‘Petite flambe en baguenaud.’ Don’t light the torches till we get to Notre Dame.  Forward march!",
+  },
+  {
+    title: "The Hunchback of Notre Dame",
+    author: "Victor Hugo",
+    year:"1831",
+    location:"Place de Greve, Paris, France",
+    picture: "https://www.artnet.com/WebServices/images/ll00201lld6bCGFgVeECfDrCWvaHBOcTtt/thomas-shotter-boys-place-de-greve,-paris.jpg",
+    description:
+      "It was the priest.  He looked like a phantom.  It was an effect of the moonlight, which seems to reveal only the ghosts of things to us. “Listen,” he said to her.  She shuddered at the sound of that sinister voice which she had not heard for so long.  He spoke in short gasps which betrayed deep inward agitation: “Listen. We’re here. I want to talk to you.  This is the Place de Greve. We’ve come to the end.  Fate has delivered us to each other.  Your life is in my hands and my soul is in yours.",
+  },
+  {
     title: "The Guns of August",
     author: "Barbara Tuchman",
     year:"1962",
