@@ -93,7 +93,7 @@ function Search() {
 
     <div style={{}}>
 
-      <a href={`/mybookshelf`}> 
+      <a href={`/mybooks`}> 
         <p style={{position: "absolute", top: "1em", right: "1em", color:"black", zIndex: 3}}>My Bookshelf</p>
       </a>
 

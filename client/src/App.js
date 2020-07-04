@@ -1,21 +1,18 @@
 import React, {useState, useEffect} from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import Subtitle from "./components/Subtitle";
-import Panorama from "./components/Panorama";
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Book from './pages/Book'
 import MyBook from './pages/MyBook'
+import MyBooks from './pages/MyBooks'
 import Search from './pages/Search'
 import Mybookshelf from './pages/Mybookshelf'
-import Openbook from "./components/Openbook";
 import Login from "./components/Login"
 import Bookfloat from "./components/Bookfloat"
-import Signup from "./components/Signup"
 import Bookshelf from "./pages/BookShelf";
 import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
-import Nav from "./components/Nav";
 import {getCurrentUser} from "./utils/API";
 import {userContext} from "./utils/appContext";
 
@@ -31,40 +28,51 @@ function App() {
        
         <Switch>
           <Route exact path="/">
-      <p>Welcome {user?.email || "Stranger"}!</p>
+            <p>Welcome {user?.email || "Stranger"}!</p>
           </Route>
+
+{/* to be replaced as "/" path */}
+          <Route exact path="/books">
+            <Bookshelf />
+          </Route>
+
           <Route exact path="/login">
             <Login/>
             <Bookfloat/>
-          </Route>
-          <Route exact path="/signup">
-            <Signup/>
-          </Route>
-
-          <Route exact path="/books">
-            <Bookshelf />
           </Route>
 
           <Route exact path="/books/:title">
             <Book/>
           </Route>
 
-          <Route exact path="/openbook">
-            <Book/>
+          <Route exact path="/searchbook">
+            <Mybookshelf/>
           </Route>
 
+          <Route exact path="/mybooks">
+            <MyBooks/>
+          </Route>
+
+          {/* to be replaced */}
+          <Route exact path="/saved">   
+            <Saved/>
+          </Route>
+
+          <Route exact path="/createbook">
+            <Search/>
+          </Route>
+
+          <Route exact path="/mybooks/:title">
+            <MyBook/>
+          </Route>
+
+          {/* to be replaced */}
           <Route exact path="/mybook">
             <MyBook/>
           </Route>
 
-          <Route exact path="/search">
-            <Search/>
-          </Route>
 
-          <Route exact path="/mybookshelf">
-          <Mybookshelf/>
-          </Route>
-          <Route exact path="/saved" component={Saved} />           
+
           <Route component={NoMatch} />
         </Switch>
       </div>
