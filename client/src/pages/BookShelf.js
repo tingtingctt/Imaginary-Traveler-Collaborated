@@ -37,7 +37,7 @@ function BookShelf(props) {
                     <div className="Background">
                         <div className="Alburquerque">
                             {/* JSX Template Literal Example */}
-                            <a href={`books/${books[0].title}`}> 
+                            <a href={`books/Alburquerque`}> 
                                 < img id="alburquerque" src={alburquerque} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "81vw", "top" : "7vh"}} alt="Alburquerque"/>
                             </a>
                         </div>
@@ -47,7 +47,9 @@ function BookShelf(props) {
                         </a>
                         </div>
                         <div className="Dracula">
-                            < img id="dracula" src={dracula} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "17vw", "top" : "8vh"}} alt="Dracula"/>
+                            <a href={`books/Dracula`}>
+                                < img id="dracula" src={dracula} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "17vw", "top" : "8vh"}} alt="Dracula"/>
+                            </a>
                         </div>  
                         <div className="Foucault">
                             <a href={`books/Foucault’s Pendulum`}> 
@@ -57,33 +59,47 @@ function BookShelf(props) {
                     {/* </Row> */}
                     {/* <Row> */}
                         <div className="Gatsby">
-                            < img id="gatsby" src={greatGatsby} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "73vw", "top" : "39vh"}} alt="The Great Gatsby"/>
+                            <a href={`books/The Great Gatsby`}>
+                                < img id="gatsby" src={greatGatsby} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "73vw", "top" : "39vh"}} alt="The Great Gatsby"/>
+                            </a>
                         </div>
                         <div className="Guns">
-                            < img id="guns"src={guns} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "53vw", "top" : "38.5vh"}} alt="The Guns of August"/>
+                            <a href={`books/The Guns of August`}>
+                                < img id="guns"src={guns} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "53vw", "top" : "38.5vh"}} alt="The Guns of August"/>
+                            </a>
                         </div>
                         <div className="Hunchback">
                             {/* animation and settime out, JSX Template Literal not working */}
-                            <a href="javascript:setTimeout(()=>{window.location = 'The Hunchback of Notre Dame' },2000);"> 
+                            <a href={`books/The Hunchback of Notre Dame`}> 
                                 <img id="hunch" src={hunchback} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "10vw", "top" : "39vh"}} alt="The Hunchback of Notre Dame"/>
                             </a>                                              
                         </div>  
                         <div className="Kingbird">
-                            < img id="kingbird" src={kingbird} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "32vw", "top" : "39vh"}} alt="Kingbird Highway"/>
+                            <a href={`books/Kingbird Highway`}>
+                                < img id="kingbird" src={kingbird} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "32vw", "top" : "39vh"}} alt="Kingbird Highway"/>
+                            </a>
                         </div>                                                             
                     {/* </Row> */}
                     {/* <Row> */}
                         <div className="Little">
-                            < img id="bridge" src={littleFires} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "81vw", "top" : "71vh"}} alt="Little Fires Everywhere"/>
+                            <a href={`books/Little Fires Everywhere`}>
+                                < img id="bridge" src={littleFires} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "81vw", "top" : "71vh"}} alt="Little Fires Everywhere"/>
+                            </a>
                         </div>
                         <div className="Play">
-                            < img id="play" src={play} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "59vw", "top" : "71vh"}} alt="Play It As It Lays"/>
+                            <a href={`books/Play It As It Lays`}>
+                                < img id="play" src={play} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "59vw", "top" : "71vh"}} alt="Play It As It Lays"/>
+                            </a>
                         </div>
                         <div className="Shaker">
-                            < img id="savannah" src={shaker} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "17vw", "top" : "71vh"}} alt="Shaker, Why Don't You Sing?"/>
+                            <a href={`books/Shaker, Why Don't You Sing?`}>
+                                < img id="savannah" src={shaker} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "17vw", "top" : "71vh"}} alt="Shaker, Why Don't You Sing?"/>
+                            </a>
                         </div>  
                         <div className="Sweet">
-                            < img id="union2"src={sweetbitter} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "37vw", "top" : "70.5vh"}} alt="Sweetbitter"/>
+                            <a href={`books/Sweetbitter`}>
+                                < img id="union2"src={sweetbitter} style={{"width" : "9vw", "height" : "24vh", "position": "absolute", "left" : "37vw", "top" : "70.5vh"}} alt="Sweetbitter"/>
+                            </a>
                         </div>                                                             
                     {/* </Row> */}
 
