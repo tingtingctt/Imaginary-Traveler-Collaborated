@@ -1,24 +1,41 @@
 import React, {useState, useEffect} from 'react';
-import Halfpano from "../components/Halfpano";
+
 import MyFlipbook from "../components/MyFlipbook";
-import FlipPage from 'react-flip-page';
+
+
+import "../components/BookPainting/bookStyle.css";
+
+import {useLocation} from "react-router-dom";
+
 
 function MyBook() {
-    const [windowSize, setWindowSize] = useState({
-        h: window.innerHeight,
-        w: window.innerWidth
-    })
+  let location = useLocation();
+  // need to modify this line
+  let title = location.pathname.replace("/books/", "");
 
-    useEffect(()=> window.addEventListener("resize", ()=>(console.log("IM CHANGING!"), setWindowSize({h:window.innerHeight,w:window.innerWidth})
-    )),[])
+  const [windowSize, setWindowSize] = useState({
+      h: window.innerHeight,
+      w: window.innerWidth
+  })
+
+  // const [books, setBooks] = useState([])
+
+  useEffect(() => {
+    window.addEventListener("resize", ()=>(console.log("IM CHANGING!"), setWindowSize({h:window.innerHeight,w:window.innerWidth})));    
+  }, [])
+
 
 
   return (
-    <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
+    <div className="BookPainting">
 
-      <MyFlipbook width={windowSize.w*0.8} height={windowSize.h*0.8}/>
-      
+      <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
+
+        <MyFlipbook title={title} width={windowSize.w*0.7} height={windowSize.h*0.7}/>
+        
+      </div>     
     </div>
+  
   );
 }
 

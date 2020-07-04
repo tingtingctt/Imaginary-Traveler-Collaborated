@@ -1,9 +1,9 @@
 // https://gist.github.com/darenju/355f2c276e5f64fd1c81b02952609be5
 
 import React, {useState, useEffect} from 'react';
-import Halfpano from "../components/Halfpano";
+
 import Flipbook from "../components/Flipbook";
-import FlipPage from 'react-flip-page';
+
 
 import "../components/BookPainting/bookStyle.css";
 

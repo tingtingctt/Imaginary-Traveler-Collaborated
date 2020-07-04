@@ -38,7 +38,7 @@ export default ()=>{
                   <button onClick={handleSubmitClick} type="submit" className="btn btn-default">{isLogin? "Login": "Sign Up"}</button>
                 </form>
                 <br />
-                <p>Or {isLogin ? "sign up " : "log in "}<a onClick={()=> setIsLogin(!login)} href="#">here</a></p>
+                <p>Or {isLogin ? "sign up " : "log in "}<a onClick={()=> setIsLogin(!isLogin)} href="#">here</a></p>
             </div>
           </div>
         </div>
