@@ -15,6 +15,7 @@ import Background from "../components/Background";
 import Wrapper from "../components/Wrapper"
 import Row from "../components/Row"
 import "../components/Background/style.css";
+import Nav from "../components/Nav";
 
 function BookShelf(props) {
     // mock API call
@@ -32,6 +33,8 @@ function BookShelf(props) {
         // <Wrapper>
 
                 <div className="container-fluid">
+
+                    <Nav/>
     
                     {/* <Row> */}
                     <div className="Background">

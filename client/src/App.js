@@ -28,24 +28,19 @@ function App() {
        
         <Switch>
           <Route exact path="/">
-            <p>Welcome {user?.email || "Stranger"}!</p>
-          </Route>
-
-{/* to be replaced as "/" path */}
-          <Route exact path="/books">
-            <Bookshelf />
-          </Route>
-
-          <Route exact path="/login">
             <Login/>
             <Bookfloat/>
+          </Route>
+
+          <Route exact path="/books">
+            <Bookshelf />
           </Route>
 
           <Route exact path="/books/:title">
             <Book/>
           </Route>
 
-          <Route exact path="/searchbook">
+          <Route exact path="/searchbooks">
             <Mybookshelf/>
           </Route>
 
@@ -53,12 +48,11 @@ function App() {
             <MyBooks/>
           </Route>
 
-          {/* to be replaced */}
-          <Route exact path="/saved">   
+          {/* <Route exact path="/saved">   
             <Saved/>
-          </Route>
+          </Route> */}
 
-          <Route exact path="/createbook">
+          <Route exact path="/editbooks">
             <Search/>
           </Route>
 

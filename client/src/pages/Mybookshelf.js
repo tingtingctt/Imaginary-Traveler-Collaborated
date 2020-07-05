@@ -6,7 +6,8 @@ import Book from "../components/Book";
 import {getBooks,saveBook} from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List } from "../components/List";
-import {userContext} from "../utils/appContext"
+import {userContext} from "../utils/appContext";
+import Nav from "../components/Nav";
 
 export default ()=> { 
   const {user} = useContext(userContext)
@@ -24,6 +25,8 @@ export default ()=> {
 
       return (
         <Container>
+          <Nav/>
+          
           <Row>
             <Col size="md-12">
               <Jumbotron>
