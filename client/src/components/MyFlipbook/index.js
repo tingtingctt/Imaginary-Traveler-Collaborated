@@ -4,6 +4,8 @@ import Panorama from '../Panorama';
 import Subtitle from '../Subtitle';
 import Audio from '../Audio';
 
+// import {userContext} from "../../utils/appContext";
+
 
 let books = [
   {
@@ -30,8 +32,8 @@ class MyFlipbook extends React.Component {
   }
 
   async componentDidMount() {    
-    // need to change this line
     const response = await fetch('/api/books');
+    // const response = await fetch('/auth/user_data');
     const data = await response.json();
     books = data.filter((book) => book.title === this.props.title);
     this.setState( {address: books[0].location} );

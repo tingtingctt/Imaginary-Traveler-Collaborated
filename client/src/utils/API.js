@@ -14,6 +14,11 @@ import axios from "axios";
   export const getCurrentUser = () => axios.get("/auth/user_data")
   export const login = data => axios.post("/auth/login", data);
   export const signup = data => axios.post("/auth/signup", data);
+
+
+  // not sure?
+  export const logout = () => axios.get("/auth/logout");
+
   export const addFav = (bid,uid) => axios.put(`/api/books/${bid}/${uid}`);
   export const deleteFav = (bid,uid) => axios.delete(`/api/books/${bid}/${uid}`)
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext} from "react";
 import {userContext} from "../utils/appContext";
+import Nav from "../components/Nav";
 
 
 import * as API from "../utils/API";
@@ -36,25 +37,6 @@ function Search() {
     window.addEventListener("resize", ()=>(console.log("IM CHANGING!"), setWindowSize({h:window.innerHeight,w:window.innerWidth})));    
   }, [])
 
-  // useEffect(() => {
-  //   if (!search) {
-  //     return;
-  //   }
-
-  //   API.searchTerms(search)
-  //     .then(res => {
-  //       if (res.data.length === 0) {
-  //         throw new Error("No results found.");
-  //       }
-  //       if (res.data.status === "error") {
-  //         throw new Error(res.data.message);
-  //       }
-  //       setTitle(res.data[1][0]);
-  //       setUrl(res.data[3][0]);
-  //     })
-  //     .catch(err => setError(err));
-  // }, [search]);
-
   const handleTextChange = event => {
     setText(event.target.value);
   };
@@ -76,7 +58,7 @@ function Search() {
     console.log("Entry", text);
     console.log("Address", address);
     console.log("Books", books);
-    //Not working, need POST route for adding entries
+    //Not working, need UPDATE-user route for adding entries
     API.saveBook({title: book, location: address, description: text}).then(res => console.log(res));
   }
 
@@ -87,16 +69,12 @@ function Search() {
 
  <div>
 
-
-
-
     <div className="BookPainting">
 
     <div style={{}}>
 
-      <a href={`/mybooks`}> 
-        <p style={{position: "absolute", top: "1em", right: "1em", color:"black", zIndex: 3}}>My Bookshelf</p>
-      </a>
+    <Nav/>
+
 
       <div style={{transform: "skewY(2deg)", margin: "5% 16% 0% 0%", paddingLeft:"5%", float: "right", lineHeight:"200%", justifyContent:'center', display: "flex", alignItems:'center', height: window.innerHeight*0.8, width: window.innerWidth*0.3}}>
         {text}
@@ -130,8 +108,6 @@ function Search() {
               {user?.books.map(book => (
                 <option value={book.volumeInfo.title} key={book.volumeInfo.title}>{book.volumeInfo.title}</option>
               ))}
-              {/* <option value="gasby">The Great Gasby</option>
-              <option value="fire">Little Fires Everywhere</option> */}
             </select>
       </div>
 
@@ -151,10 +127,6 @@ function Search() {
 
       <button onClick={handleSave} type="button" className="btn btn-default">Save</button>
 
-
-      {/* <button type="submit" className="btn btn-default">Add Paragraph</button> */}
-
-      {/* <button value={address} onClick={handleAddressChange} className="btn btn-default">Preview Panorama</button> */}
     </form>
 
 

@@ -4,6 +4,8 @@ import React, {useState, useEffect} from 'react';
 
 import Flipbook from "../components/Flipbook";
 
+// import Nav from "../components/Nav";
+
 
 import "../components/BookPainting/bookStyle.css";
 
@@ -30,6 +32,7 @@ function Book() {
 
   return (
     <div className="BookPainting">
+      {/* <Nav/> */}
 
       <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
 

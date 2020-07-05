@@ -15,7 +15,7 @@ export default ()=>{
     e.preventDefault()
     const {data} = isLogin ? await login(input) : await signup(input);
     if(data?.email){
-      window.location.replace('/')}
+      window.location.replace('/books')}
   }
     return (  
     <div>
