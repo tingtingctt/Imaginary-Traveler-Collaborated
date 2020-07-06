@@ -12,6 +12,9 @@ router
   .get(booksController.findById)
   .put(booksController.update)
   .delete(booksController.remove);
+
+router.route("/entries/:uid?")
+  .put(booksController.updateEntry);
   
 
 module.exports = router;
