@@ -25,7 +25,11 @@ const userSchema = new Schema({
     books: {
         type: Array,
         default: []
-    }
+    },
+    entries: {
+        type: Array,
+        default: []
+    },
 });
 
 userSchema.pre("save", function(){

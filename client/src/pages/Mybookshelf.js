@@ -6,10 +6,15 @@ import Book from "../components/Book";
 import {getBooks,saveBook} from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List } from "../components/List";
+
 import {userContext} from "../utils/appContext"
 import "../components/Container/style.css"
 import BrushyBackground from "../components/BrushyBackground/brushyIndex.js";
 import SearchBackground from "../components/SearchBackground/searchBackgroundIndex.js"
+
+
+
+import Nav from "../components/Nav";
 
 
 export default ()=> { 
@@ -30,7 +35,12 @@ export default ()=> {
         <div className="body">
         <BrushyBackground>
         <Container>
+
           <SearchBackground>
+
+          <Nav/>
+          
+
           <Row>
             {/* <Col size="md-12">
             </Col> */}

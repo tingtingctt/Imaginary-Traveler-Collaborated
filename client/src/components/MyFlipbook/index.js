@@ -30,11 +30,10 @@ class MyFlipbook extends React.Component {
   }
 
   async componentDidMount() {    
-    // need to change this line
-    const response = await fetch('/api/books');
-    const data = await response.json();
-    books = data.filter((book) => book.title === this.props.title);
-    this.setState( {address: books[0].location} );
+    //const response = await fetch('/api/books');
+
+    // books = data.filter((book) => book.title === this.props.title);
+   // this.setState( {address: books[0].location} );
 
     console.log(this.state);
     console.log("Books", books);
@@ -72,6 +71,7 @@ class MyFlipbook extends React.Component {
   };
   
   render() {
+    console.log(this.props.book)
     return (
       <div>
 

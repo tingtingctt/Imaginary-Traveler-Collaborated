@@ -2,8 +2,16 @@ import React from 'react';
 import Halfpano from "../Halfpano";
 import Panorama from '../Panorama';
 import Subtitle from '../Subtitle';
-import test6 from "../../assets/test6.mp3";
-import Audio from '../Audio';
+import "./style.css";
+import audios from '../../assets/audioCMS';
+
+// import {TransitionGroup as ReactCSSTransitionGroup} from 'react-transition-group';
+
+
+// import test6
+//import audio0 from "src";
+//import audio1 from "src";
+//const audios = {audio0: require("../src"), audio1: require("../src")}
 
 
 let books = [
@@ -14,7 +22,129 @@ let books = [
 ];
 
 
-// const pages = [
+
+class Flipbook extends React.Component {
+    constructor(props) {
+      super(props);
+
+      this.gotoNextPage = this.gotoNextPage.bind(this);
+      this.gotoPreviousPage = this.gotoPreviousPage.bind(this);
+      
+    }
+
+    state = {
+      clicked: false,
+      address: "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France",
+      index: 0,
+      audio: null
+    }
+
+    async componentDidMount() {    
+      const response = await fetch('/api/books');
+      const data = await response.json();
+      books = data.filter((book) => book.title === this.props.title);
+
+      this.setState( {address: books[0].location} );
+
+      // audios[this.props.title]? audiosArr = audios[this.props.title] : audiosArr = [];
+      audios[this.props.title]? this.setState({audio: audios[this.props.title][0]}) : this.setState({audio: null})
+
+    }
+  
+    gotoNextPage() {
+      if (this.state.index < books.length-1){
+        let j = this.state.index + 1;
+        this.setState( { address: books[j].location, index: j } );
+        audios[this.props.title]? this.setState({audio:  audios[this.props.title][j]}): this.setState({audio: null});
+        // this.setState({audio: audios[`audio${index}`]})
+      }
+
+      console.log("current index:" + this.state.index)
+    }
+
+    gotoPreviousPage() {
+
+        if (this.state.index > 0){
+          let j = this.state.index -1;
+          this.setState( { address: books[j].location, index: j } );
+          audios[this.props.title]? this.setState({audio:  audios[this.props.title][j]}): this.setState({audio: null});
+        }
+  
+      }
+
+    handleClick = () => {
+      if(this.state.clicked  === false) {
+        return this.setState({clicked: true});
+      } 
+      if(this.state.clicked === true)  {
+        return this.setState({clicked: false});
+      }
+    };
+    
+    render() {
+      return (
+        <div>
+
+        {this.state.clicked === false ? 
+        (<div>
+
+      <a href="/mybooks" style={{position: "fixed", top: "0em", right: "1em", color:"white", backgroundColor: "#363332",  zIndex: 3}}> My BookShelf </a>
+      <a href="/books" style={{position: "fixed", top: "0em", right: "10em", color:"white", backgroundColor: "#363332", zIndex: 3}}> Curated </a>  
+
+          <button onClick={this.handleClick} value={this.state.address} style={{position: "fixed", transform: "skewY(-2.2deg)", left: "28%", top: "5%", zIndex: "20"}}>FullPano</button>
+
+          <div className="fadeIn" style={{transform: "skewY(-2.2deg)", paddingRight:"12%", float: "left", display: 'flex',  justifyContent:'center', zIndex: "2", height: window.innerHeight*0.8, width: window.innerWidth*0.4}}>
+              <Halfpano address={this.state.address}/>
+          </div>
+
+          {/* <ReactCSSTransitionGroup
+            transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={2500}
+            transitionEnter={true}
+            transitionLeave={true}>
+               */}
+              <div className="fadeIn" style={{transform: "skewY(2deg)", paddingLeft:"5%", float: "right", lineHeight:"200%", justifyContent:'center', display: "flex", alignItems:'center', height: window.innerHeight*0.8, width: window.innerWidth*0.3}}>
+                {books[this.state.index].description}
+              </div>
+              
+          {/* </ReactCSSTransitionGroup> */}
+
+          {/* <TextBox description={books[this.state.index].description}/> */}
+
+          <br/>     
+
+          <button style={{transform: "skewY(-2.3deg)", marginRight: "20%"}} onClick={this.gotoPreviousPage}>Previous Page</button>
+          <button style={{transform: "skewY(2deg)", marginLeft: "20%"}} onClick={this.gotoNextPage}>Next Page</button>
+          </div>)
+        : (
+        
+        <>
+          <Panorama style={{zIndex:"3", position: "fixed", top: 0, left: 0}} address={this.state.address}/>
+          <button style={{zIndex:"100", position: "fixed", top: "1em"}} onClick={this.handleClick}>Go back</button>
+          <Subtitle text={(books[this.state.index].description).split(".")}/>
+          <audio style={{position: "fixed", bottom: 0}} controls autoPlay src={this.state.audio ?? ""}></audio>
+        </>)
+       } 
+      </div>
+    )}
+
+  }
+
+  export default Flipbook;
+
+
+
+  // const TextBox = ({description}) =>{
+//   return <ReactCSSTransitionGroup>
+//   <div className="fadeIn" style={{transform: "skewY(2deg)", paddingLeft:"5%", float: "right", lineHeight:"200%", justifyContent:'center', display: "flex", alignItems:'center', height: window.innerHeight*0.8, width: window.innerWidth*0.3}}>
+//   {description}
+// </div>
+// </ReactCSSTransitionGroup>
+// }
+
+
+  // const pages = [
 //   {
 //     "index": 0,
 //     "address": "Paris Notre-Dame -- Place Jean-Paul-II, Paris, France",
@@ -36,102 +166,6 @@ let books = [
 //     "text": "I got to my fee, tipped my hat to the blonde and went out after him.  He walked west, swinging his cane in a small tight arc just above his right shoe.  He was easy to follow.  His coat was cut from a rather loud piece of horse robe with shoulders so wide that his neck stuck up out of it like a celery stalk and his head wobbled on it as he walked.  We went a block and a half.  At the Highland Avenue traffic signal I pulled up beside him and let him see me… I leaned against a pepper tree in the parkway and waited.  The thunder in the foothills ws rumbling again.  The glare of lightning was reflected on piled-up black clouds off to the south.  A few tentative raindrops splashed down on the sidewalk and made spots as large as nickels.  The air was as still as the air in General Sternwood’s orchid house. --The Big Sleep"
 //   }
 // ]
-
-
-
-class Flipbook extends React.Component {
-    constructor(props) {
-      super(props);
-
-      this.gotoNextPage = this.gotoNextPage.bind(this);
-      this.gotoPreviousPage = this.gotoPreviousPage.bind(this);
-      
-    }
-
-    state = {
-      clicked: false,
-      address: "31 rue saint louis en l'ile, 75004 Paris, France",
-      index: 0
-    }
-
-    async componentDidMount() {    
-      const response = await fetch('/api/books');
-      const data = await response.json();
-      books = data.filter((book) => book.title === this.props.title);
-      this.setState( {address: books[0].location} );
-
-      console.log(this.state);
-      console.log("Books", books);
-
-    }
-  
-    gotoNextPage() {
-
-      if (this.state.index < books.length-1){
-        let j = this.state.index + 1;
-        this.setState( { address: books[j].location, index: j } );
-
-      }
-
-      console.log("current index:" + this.state.index)
-    }
-
-    gotoPreviousPage() {
-
-        if (this.state.index > 0){
-          let j = this.state.index -1;
-          this.setState( { address: books[j].location, index: j } );
-        }
-  
-      }
-
-    handleClick = () => {
-
-      if(this.state.clicked  === false) {
-        return this.setState({clicked: true});
-      } 
-      if(this.state.clicked === true)  {
-        return this.setState({clicked: false});
-      }
-    };
-    
-    render() {
-      return (
-        <div>
-
-        {this.state.clicked === false ? 
-        (<>
-          <button onClick={this.handleClick} value={this.state.address} style={{position: "fixed", transform: "skewY(-2.2deg)", left: "28%", top: "5%", zIndex: "20"}}>FullPano</button>
-
-          <div style={{transform: "skewY(-2.2deg)", paddingRight:"12%", float: "left", display: 'flex',  justifyContent:'center', zIndex: "2", height: window.innerHeight*0.8, width: window.innerWidth*0.4}}>
-              <Halfpano address={this.state.address}/>
-          </div>
-
-
-          <div style={{transform: "skewY(2deg)", paddingLeft:"5%", float: "right", lineHeight:"200%", justifyContent:'center', display: "flex", alignItems:'center', height: window.innerHeight*0.8, width: window.innerWidth*0.3}}>
-            {books[this.state.index].description}
-          </div>
-
-          <br/>     
-
-          <button style={{transform: "skewY(-2.3deg)", marginRight: "20%"}} onClick={this.gotoPreviousPage}>Go to previous page</button>
-          <button style={{transform: "skewY(2deg)", marginLeft: "20%"}} onClick={this.gotoNextPage}>Go to next page</button>
-          </>)
-        : (
-        
-        <>
-          <Panorama style={{zIndex:"3", position: "fixed", top: 0, left: 0}} address={this.state.address}/>
-          <button style={{zIndex:"100", position: "fixed", top: "1em"}} onClick={this.handleClick}>Go back</button>
-          <Subtitle text={(books[this.state.index].description).split(".")}/>
-          {/* <Audio url={test6}/> */}
-        </>)
-       } 
-      </div>
-    )}
-
-  }
-
-
 
 
 
@@ -185,4 +219,4 @@ class Flipbook extends React.Component {
 
 
 
-    export default Flipbook;
+

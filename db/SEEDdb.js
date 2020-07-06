@@ -112,13 +112,23 @@ const bookSeed = [
     location:"Paris Notre-Dame -- Place Jean-Paul-II, Paris, France",
     picture: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Cath%C3%A9drale_Notre-Dame_de_Paris%2C_3_June_2010.jpg/520px-Cath%C3%A9drale_Notre-Dame_de_Paris%2C_3_June_2010.jpg",
     description:
+      "Admirable, however, as the Paris of the present day appears to you, build up and put together again in imagination the Paris of the fifteenth century. Look at the light through that surprising host of steeples, towers, and belfries. Pour forth amid the immense city, break against the points of its islands, compress within the arches of the bridges, the current of the Seine, with its large patches of green and yellow, more changeable than a serpent's skin. Define clearly the Gothic profile of this old Paris upon an horizon of azure, make its contour float in a wintry fog which clings to its innumerable chimneys. Drown it in deep night, and observe the extraordinary play of darkness and light in this sombre labyrinth of buildings. Throw into it a ray of moonlight, which shall show its faint outline and cause the huge heads of the towers to stand forth from amid the mist. Or revert to that dark picture, touch up with shade the thousand acute angles of the spires and gables, and make them stand out, more jagged than a shark's jaw, upon the copper-coloured sky of evening. Now compare the two.",
+  },
+
+  {
+    title: "The Hunchback of Notre Dame",
+    author: "Victor Hugo",
+    year:"1831",
+    location:"6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France",
+    picture: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Cath%C3%A9drale_Notre-Dame_de_Paris%2C_3_June_2010.jpg/520px-Cath%C3%A9drale_Notre-Dame_de_Paris%2C_3_June_2010.jpg",
+    description:
       "His cathedral was enough for him. It was peopled with marble figures of kings, saints and bishops who at least did not laugh in his face and looked at him with only tranquillity and benevolence. The other statues, those of monsters and demons, had no hatred for him – he resembled them too closely for that. It was rather the rest of mankind that they jeered at. The saints were his friends and blessed him; the monsters were his friends and kept watch over him. He would sometimes spend whole hours crouched before one of the statues in solitary conversation with it. If anyone came upon him then he would run away like a lover surprised during a serenade.",
   },
   {
     title: "The Hunchback of Notre Dame",
     author: "Victor Hugo",
     year:"1831",
-    location:"The river Seine, Paris, France",
+    location:"Chemin de Halage, Évry, Île-de-France",
     picture: "https://image.freepik.com/free-photo/pont-neuf-vintage-color-oldest-standing-bridge-across-river-seine-paris_109442-299.jpg",
     description:
       "When the boatman had left him he stood on the bank, staring straight ahead in a dazed fashion.  It is not rare for the fatigue of a great sorrow to produce such an effect on the mind.  The sun had sunk below the lofty Tour de Nesle and the twilight had begun.  The sky and the water were both white.  Between them, the left bank of the Seine, on which his eyes were fixed, projected its dark mass.  Only the outlines of its houses were visible, standing out sharply against the light background of the sky and the river.",

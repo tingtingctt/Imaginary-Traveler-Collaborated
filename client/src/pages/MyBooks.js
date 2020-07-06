@@ -1,6 +1,8 @@
 import React, {useContext,useState} from "react";
 import "../components/Background/style.css";
-import {userContext} from "../utils/appContext"
+import {userContext} from "../utils/appContext";
+import Nav from "../components/Nav";
+
 
 function MyBooks() {
     const {user} = useContext(userContext);
@@ -11,6 +13,10 @@ function MyBooks() {
                 <div className="container-fluid">
     
                     <div className="Background">
+
+                      
+                        <Nav/>
+
 
                         {user?.books[0]?
                         (
