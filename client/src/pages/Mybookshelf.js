@@ -1,13 +1,21 @@
 import React, {useState, useContext} from "react";
-import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card";
+import CardTwo from "../components/CardTwo";
 import Form from "../components/Form";
 import Book from "../components/Book";
 import {getBooks,saveBook} from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List } from "../components/List";
-import {userContext} from "../utils/appContext";
+
+import {userContext} from "../utils/appContext"
+import "../components/Container/style.css"
+import BrushyBackground from "../components/BrushyBackground/brushyIndex.js";
+import SearchBackground from "../components/SearchBackground/searchBackgroundIndex.js"
+
+
+
 import Nav from "../components/Nav";
+
 
 export default ()=> { 
   const {user} = useContext(userContext)
@@ -24,31 +32,35 @@ export default ()=> {
   const handleBookSave = book => saveBook(book, user._id)
 
       return (
+        <div className="body">
+        <BrushyBackground>
         <Container>
+
+          <SearchBackground>
+
           <Nav/>
           
+
           <Row>
+            {/* <Col size="md-12">
+            </Col> */}
             <Col size="md-12">
-              <Jumbotron>
-                <h1 className="text-center">
-                  <strong>(React) Google Books Search</strong>
-                </h1>
-                <h2 className="text-center">Search for and Save Books of Interest.</h2>
-              </Jumbotron>
-            </Col>
-            <Col size="md-12">
-              <Card title="Book Search" icon="far fa-book">
+              <Card title="My Bookshelf Builder" icon="far fa-book">
                 <Form
                   onChange={setSearch}
                   handleFormSubmit={handleSearch}
                   q={search}
                 />
               </Card>
+
             </Col>
           </Row>
+          </SearchBackground>
+
           <Row>
             <Col size="md-12">
-              <Card title="Results">
+              <CardTwo>
+              <h3 style={{"color" : "#ffffff"}}>Results</h3>
                   <List>
                     {books.map(book => (
                       <Book
@@ -70,9 +82,16 @@ export default ()=> {
                       />
                     ))}
                   </List>
-              </Card>
+              </CardTwo>
             </Col>
           </Row>
         </Container>
+        </BrushyBackground>
+        <BrushyBackground>
+          <p style={{"fontSize" : "400px", "color" : "transparent"}}>
+            results
+          </p>
+        </BrushyBackground>
+        </div>
       );
   }
