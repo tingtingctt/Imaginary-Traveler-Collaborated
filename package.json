@@ -14,12 +14,9 @@
     "if-env": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.20",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.1.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0",
-    "sequelize": "^5.21.12"
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.7"
@@ -33,7 +30,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm run build",
     "install": "cd client && npm install",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "seed": "cd db && node SEEDdb.js",
+    "heroku-postbuild": "cd client && npm install && npm run build && npm run seed"
   },
   "engines": {
     "node": "12.16.1"
