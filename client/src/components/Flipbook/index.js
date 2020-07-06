@@ -42,9 +42,12 @@ class Flipbook extends React.Component {
     async componentDidMount() {    
       const response = await fetch('/api/books');
       const data = await response.json();
-      books = data.filter((book) => book.title === this.props.title);
+      books = data.filter((book) => book.title.toLowerCase().includes(this.props.title.toLowerCase()));
 
-      this.setState( {address: books[0].location} );
+      console.log("bug" + books[0]?.location);
+
+      this.setState( {address: books[0]?.location} );
+
 
       // audios[this.props.title]? audiosArr = audios[this.props.title] : audiosArr = [];
       audios[this.props.title]? this.setState({audio: audios[this.props.title][0]}) : this.setState({audio: null})
@@ -82,6 +85,7 @@ class Flipbook extends React.Component {
     };
     
     render() {
+      console.log(this.props.title)
       return (
         <div>
 

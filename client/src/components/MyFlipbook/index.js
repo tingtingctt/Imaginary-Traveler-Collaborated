@@ -77,6 +77,10 @@ class MyFlipbook extends React.Component {
 
       {this.state.clicked === false ? 
       (<>
+
+        <a href="/mybooks" style={{position: "fixed", top: "0em", right: "1em", color:"white", backgroundColor: "#363332",  zIndex: 3}}> My BookShelf </a>
+        <a href="/books" style={{position: "fixed", top: "0em", right: "10em", color:"white", backgroundColor: "#363332", zIndex: 3}}> Curated </a>  
+
         <button onClick={this.handleClick} value={this.state.address} style={{position: "fixed", transform: "skewY(-2.2deg)", left: "28%", top: "5%", zIndex: "20"}}>FullPano</button>
 
         <div style={{transform: "skewY(-2.2deg)", paddingRight:"12%", float: "left", display: 'flex',  justifyContent:'center', zIndex: "2", height: window.innerHeight*0.8, width: window.innerWidth*0.4}}>
