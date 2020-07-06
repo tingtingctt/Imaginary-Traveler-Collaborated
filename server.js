@@ -32,6 +32,12 @@ app.use(passport.session())
 require('./routes/auth')(app);
 app.use(routes);
 
+// not sure??????????
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
+
 // Syncing our database and logging a message to the user upon success
 app.listen(PORT, function() {
   console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
