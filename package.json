@@ -31,7 +31,7 @@
     "build": "cd client && npm run build",
     "install": "cd client && npm install",
     "seed": "cd db && node SEEDdb.js",
-    "heroku-postbuild": "cd client && npm install && npm run build && npm run seed"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "engines": {
     "node": "12.16.1"
