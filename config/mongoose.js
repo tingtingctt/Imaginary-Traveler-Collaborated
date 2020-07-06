@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 // what??????
+const notUse;
 
 mongoose.connect(
     process.env.MONGODB_URI || "mongodb://localhost/imaginary_traveler",
