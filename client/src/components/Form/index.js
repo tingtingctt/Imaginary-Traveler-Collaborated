@@ -10,11 +10,11 @@ function Form({ q, onChange, handleFormSubmit }) {
           <strong>Book</strong>
         </label>
         <input
-          className="form-control"
+          className="form-control "
           id="Title"
           type="text"
           value={q}
-          placeholder="Ready Player One"
+          placeholder="Search by Title"
           name="q"
           onChange={(e)=>onChange(e.target.value)}
           required
