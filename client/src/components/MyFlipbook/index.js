@@ -71,7 +71,8 @@ class MyFlipbook extends React.Component {
   };
   
   render() {
-    console.log(this.props.book)
+    console.log("74", this.props.book)
+    console.log("75", this.props.book[this.state.index])
     return (
       <div>
 
@@ -85,7 +86,7 @@ class MyFlipbook extends React.Component {
 
 
         <div style={{transform: "skewY(2deg)", paddingLeft:"5%", float: "right", lineHeight:"200%", justifyContent:'center', display: "flex", alignItems:'center', height: window.innerHeight*0.8, width: window.innerWidth*0.3}}>
-          {books[this.state.index].description}
+          {/* {this.props.book[this.state.index].description} */}
         </div>
 
         <br/>     

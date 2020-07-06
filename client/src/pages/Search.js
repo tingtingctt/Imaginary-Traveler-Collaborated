@@ -54,12 +54,13 @@ function Search() {
   }
 
   const handleSave = () => {
-    console.log("Book", book);
-    console.log("Entry", text);
-    console.log("Address", address);
-    console.log("Books", books);
+    console.log(user);
+    // console.log("Book", book);
+    // console.log("Entry", text);
+    // console.log("Address", address);
+    // console.log("Books", books);
     //Not working, need UPDATE-user route for adding entries
-    API.saveBook({title: book, location: address, description: text}).then(res => console.log(res));
+    API.saveEntry({title: book, location: address, description: text}, user._id).then(res => console.log(res));
   }
 
 

@@ -13,10 +13,11 @@ import {useLocation} from "react-router-dom";
 
 function MyBook() {
   const {user} = useContext(userContext);
-  const [currentBook, setCurrentBook] = useState({});
+  const [currentBook, setCurrentBook] = useState([]);
   useEffect(()=>{
     let title = location.pathname.replace("/mybooks/", "");
-    setCurrentBook(user?.books.filter(a=> a.volumeInfo.title === title)[0])
+    console.log(user);
+    setCurrentBook(user?.entries.filter(a=> a.title === title))
   }, [user])
   let location = useLocation();
   // need to modify this line

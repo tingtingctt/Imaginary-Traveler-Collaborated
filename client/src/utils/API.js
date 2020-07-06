@@ -10,6 +10,8 @@ import axios from "axios";
   // Saves a book to the database
   export const saveBook = (book,id) => axios.put("/api/books/"+id, book);
   export const getSavedBooks = () => axios.get("/api/books");
+  //Saves a user made "entry" to the database
+  export const saveEntry = (entry,id) => axios.put("/api/books/entries/"+id, entry);
 
   export const getCurrentUser = () => axios.get("/auth/user_data")
   export const login = data => axios.post("/auth/login", data);
