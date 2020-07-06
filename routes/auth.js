@@ -20,8 +20,9 @@ app.get("/auth/user_data", (req,res)=>{
 })
 
 app.get("/auth/logout", (req,res)=>{
+    console.log("logged out")
     req.logout();
-    res.redirect("/")
+    res.json('ok')
 })
 }
 
