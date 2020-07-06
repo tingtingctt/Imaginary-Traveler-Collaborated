@@ -1,33 +1,8 @@
 {
-  "name": "imaginarytraveller",
+  "name": "ImaginaryTraveler",
   "version": "1.0.0",
-  "description": "project 2",
+  "description": "Full Stack App",
   "main": "server.js",
-  "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd client && npm run start",
-    "seed": "node db/SEEDdb.js",
-    "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/paulsharpe-git/GoDo.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^4.1.2",
-    "nodemon": "^1.18.7"
-  },
-  "bugs": {
-    "url": "https://github.com/paulsharpe-git/GoDo/issues"
-  },
-  "homepage": "https://github.com/paulsharpe-git/GoDo#readme",
   "dependencies": {
     "axios": "^0.19.2",
     "bcrypt": "^5.0.0",
@@ -45,5 +20,34 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "sequelize": "^5.21.12"
-  }
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.2",
+    "nodemon": "^1.18.7"
+  },
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "cross-env NODE_ENV=production node index.js",
+    "start:dev": "concurrently -k npm:watch-*",
+    "watch-client": "cd client && npm start",
+    "watch-server": "nodemon --ignore \"client/\" index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm run build",
+    "install": "cd client && npm install",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "engines": {
+    "node": "12.16.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tingtingctt/ImaginaryTraveler.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tingtingctt/ImaginaryTraveler/issues"
+  },
+  "homepage": "https://github.com/tingtingctt/ImaginaryTraveler#readme"
 }
