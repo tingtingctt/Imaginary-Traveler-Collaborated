@@ -9,10 +9,10 @@ class Subtitle extends React.Component {
       const { text } = this.props;
       const options = {
         strings: text,
-        typeSpeed: 70,
+        typeSpeed: 55,
         fadeOut: true,
         fadeOutClass: 'typed-fade-out',
-        fadeOutDelay: 1000,
+        fadeOutDelay: 200,
         showCursor: false,
         loopCount: Infinity,
       };
@@ -29,7 +29,7 @@ class Subtitle extends React.Component {
     render() {
       return (
         <div className="wrap">
-          <div className="type-wrap" style={{position: "fixed", top: "50px", left: "200px", zIndex: 2, color: "white", fontSize: "20px", backgroundColor: "black"}}>
+          <div className="type-wrap" style={{position: "fixed", top: "50px", left: "50px", zIndex: 2, color: "white", fontSize: "20px", backgroundColor: "black"}}>
             <span
               style={{ whiteSpace: 'pre' }}
               ref={(el) => { this.el = el; }}
