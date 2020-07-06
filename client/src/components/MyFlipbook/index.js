@@ -2,16 +2,6 @@ import React from 'react';
 import Halfpano from "../Halfpano";
 import Panorama from '../Panorama';
 import Subtitle from '../Subtitle';
-import Audio from '../Audio';
-
-
-let books = [
-  {
-    location: "",
-    description: ""
-  }
-];
-
 
 
 class MyFlipbook extends React.Component {
@@ -25,26 +15,18 @@ class MyFlipbook extends React.Component {
 
   state = {
     clicked: false,
-    address: "31 rue saint louis en l'ile, 75004 Paris, France",
-    index: 0
+    index: 0,
   }
 
-  async componentDidMount() {    
-    //const response = await fetch('/api/books');
+  // async componentDidMount() {    
 
-    // books = data.filter((book) => book.title === this.props.title);
-   // this.setState( {address: books[0].location} );
-
-    console.log(this.state);
-    console.log("Books", books);
-
-  }
+  // }
 
   gotoNextPage() {
 
-    if (this.state.index < books.length-1){
+    if (this.state.index < this.props.descriptions.length-1){
       let j = this.state.index + 1;
-      this.setState( { address: books[j].location, index: j } );
+      this.setState( { index: j } );
 
     }
 
@@ -55,7 +37,7 @@ class MyFlipbook extends React.Component {
 
       if (this.state.index > 0){
         let j = this.state.index -1;
-        this.setState( { address: books[j].location, index: j } );
+        this.setState( { index: j } );
       }
 
     }
@@ -71,22 +53,27 @@ class MyFlipbook extends React.Component {
   };
   
   render() {
-    console.log("74", this.props.book)
-    console.log("75", this.props.book[this.state.index])
+
+    console.log("78", this.props.descriptions?.length);
     return (
       <div>
 
+
       {this.state.clicked === false ? 
       (<>
-        <button onClick={this.handleClick} value={this.state.address} style={{position: "fixed", transform: "skewY(-2.2deg)", left: "28%", top: "5%", zIndex: "20"}}>FullPano</button>
+
+          <a href="/mybooks" style={{position: "fixed", top: "0em", right: "1em", color:"white", backgroundColor: "#363332",  zIndex: 3}}> My BookShelf </a>
+          <a href="/books" style={{position: "fixed", top: "0em", right: "10em", color:"white", backgroundColor: "#363332", zIndex: 3}}> Curated </a>  
+
+        <button onClick={this.handleClick} value={this.props.locations??[this.state.index]} style={{position: "fixed", transform: "skewY(-2.2deg)", left: "28%", top: "5%", zIndex: "20"}}>FullPano</button>
 
         <div style={{transform: "skewY(-2.2deg)", paddingRight:"12%", float: "left", display: 'flex',  justifyContent:'center', zIndex: "2", height: window.innerHeight*0.8, width: window.innerWidth*0.4}}>
-            <Halfpano address={this.state.address}/>
+            {this.props.locations? (<Halfpano address={this.props.locations[this.state.index]}/>): (<></>)  }
         </div>
 
 
         <div style={{transform: "skewY(2deg)", paddingLeft:"5%", float: "right", lineHeight:"200%", justifyContent:'center', display: "flex", alignItems:'center', height: window.innerHeight*0.8, width: window.innerWidth*0.3}}>
-          {/* {this.props.book[this.state.index].description} */}
+        {this.props.descriptions? (this.props.descriptions[this.state.index]): (<></>)  }
         </div>
 
         <br/>     
@@ -97,10 +84,10 @@ class MyFlipbook extends React.Component {
       : (
       
       <>
-        <Panorama style={{zIndex:"3", position: "fixed", top: 0, left: 0}} address={this.state.address}/>
+        <Panorama style={{zIndex:"3", position: "fixed", top: 0, left: 0}} address={this.props.locations??[this.state.index]}/>
         <button style={{zIndex:"100", position: "fixed", top: "1em"}} onClick={this.handleClick}>Go back</button>
-        <Subtitle text={(books[this.state.index].description).split(".")}/>
-        <Audio></Audio>
+        <Subtitle text={(this.props.descriptions??[this.state.index]).split(".")}/>
+
 
       </>)
      } 
