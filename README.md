@@ -12,6 +12,25 @@ Imaginary Traveler provides a platform for users with a love of the written word
 
 https://imaginarytraveler4.herokuapp.com/
 
+## Technologies 
+
+### Front End
+
+  React Library
+  React Animation: Typed.js
+  Javascript/ HTML5 Canvas
+  CSS Keyframes
+  Jesse’s Artwork( Group Team-mate & Contributor )
+  React-Google-Map-Street-View Api
+  
+### Back End
+
+  MongoDb
+  User Schema 
+  Book Schema 
+  Passport
+
+
 
 ## Installations 
 
